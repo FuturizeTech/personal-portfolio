@@ -2,7 +2,6 @@
 "use client";
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 function AboutSection() {
   return (
@@ -28,6 +27,7 @@ function AboutSection() {
             width={280}
             height={280}
             alt="Sarabjeet Singh"
+            unoptimized
             className="rounded-lg transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-110 cursor-pointer"
           />
         </div>

@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react'; // optional icons from lucide-react (or use plain SVG)
+import { Menu, X } from 'lucide-react';
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,11 +19,10 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-[9999] transition-colors duration-300 ${
-        scrolled
-          ? 'bg-black bg-opacity-40 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 w-full z-[9999] transition-colors duration-300 ${scrolled
+        ? 'bg-black bg-opacity-40 backdrop-blur-md shadow-lg'
+        : 'bg-transparent'
+        }`}
     >
       <div className="flex items-center justify-between px-6 py-5">
         {/* Logo */}
@@ -35,7 +34,7 @@ function Navbar() {
                 <circle cx="15" cy="25" r="8" fill="#2D2E52" />
                 <rect x="10" y="30" width="10" height="15" fill="#2D2E52" />
               </g>
-              <text x="60" y="55" fontFamily="Arial, sans-serif" fontSize="32" fontWeight="bold" fill="white">
+              <text x="60" y="55" fontFamily="Arial, sans-serif" fontSize="32" fontWeight="bold" fill="#EC4899">
                 Futurize
                 <tspan fill="#00D1FF">Tech</tspan>
               </text>
@@ -44,12 +43,12 @@ function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-4">
+        <ul className="hidden md:flex space-x-8"> {/* increased spacing here */}
           {navItems.map((section) => (
             <li key={section}>
               <Link
-                className="text-sm text-white transition-colors duration-300 hover:text-pink-600"
                 href={`/#${section}`}
+                className="text-sm text-white transition duration-300 hover:text-pink-500 hover:drop-shadow-[0_0_8px_#ec4899] drop-shadow-[0_0_6px_#ffffffaa]" // glowing effects
               >
                 {section.toUpperCase()}
               </Link>
@@ -69,13 +68,13 @@ function Navbar() {
       {/* Mobile Dropdown */}
       {isMobileMenuOpen && (
         <div className="md:hidden px-6 pb-4">
-          <ul className="flex flex-col space-y-2">
+          <ul className="flex flex-col space-y-3">
             {navItems.map((section) => (
               <li key={section}>
                 <Link
-                  className="text-white hover:text-pink-600 transition-colors duration-300"
                   href={`/#${section}`}
                   onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-white hover:text-pink-500 transition duration-300 hover:drop-shadow-[0_0_8px_#ec4899] drop-shadow-[0_0_6px_#ffffffaa]" // glowing
                 >
                   {section.toUpperCase()}
                 </Link>
