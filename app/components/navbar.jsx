@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import Image from "next/image";
+import Logo from '@/public/trace.svg';
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +30,7 @@ function Navbar() {
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="text-[#16f2b3] text-2xl font-bold flex items-center">
-            <svg width="200" height="50" viewBox="0 5 300 100" xmlns="http://www.w3.org/2000/svg">
+            {/* <svg width="200" height="50" viewBox="0 5 300 100" xmlns="http://www.w3.org/2000/svg">
               <g transform="translate(20, 20)">
                 <rect x="0" y="0" width="30" height="50" rx="5" fill="white" />
                 <circle cx="15" cy="25" r="8" fill="#2D2E52" />
@@ -38,12 +40,18 @@ function Navbar() {
                 Futurize
                 <tspan fill="#00D1FF">Tech</tspan>
               </text>
-            </svg>
+            </svg> */}
+            <Image
+              src={Logo}
+              height={50}
+              width={50}
+              alt=""
+            />
           </Link>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8"> {/* increased spacing here */}
+        <ul className="hidden md:flex space-x-8">
           {navItems.map((section) => (
             <li key={section}>
               <Link
