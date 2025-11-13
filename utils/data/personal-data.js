@@ -2,7 +2,7 @@ export const personalData = {
   name: "Sarabjeet Singh",
   profile: '/image.jpg',
   designation: "Software Developer",
-  description: "Hi, I'm Sarabjeet Singh — a passionate and enthusiastic programmer with a strong focus on web application development. I’m a quick and self-motivated learner who loves diving into new technologies and solving real-world problems through code. My development journey is deeply rooted in JavaScript, but I also work extensively with frameworks and tools like Laravel, Next.js, Node.js, React, Yii, and more.I enjoy building scalable, high- performance web applications and aim to make the web more accessible and innovative. I'm always open to exciting opportunities that align with my skills and interests — whether it’s freelance, collaboration, or full-time roles.",
+  description: "I'm a passionate full-stack web developer with 2+ years of experience in building dynamic, responsive, and user-focused web applications using Laravel, PHP, Yii2, Node Js, Next Js and JavaScript. I specialize in crafting scalable backend systems, intuitive user interfaces, and seamless API integrations. Whether you need a business dashboard, e-commerce solution, or custom web tool — I can help you build it from the ground up. When I’m not coding, I’m learning new technologies, optimizing performance, and contributing to open-source projects.",
   email: 'sjalalpuria001@gmail.com',
   phone: '+91 7307472724',
   address: 'SAS Nagar( Mohali ), Punjab, India',
