@@ -13,13 +13,13 @@ export const educations = [
   },
   {
     id: 3,
-    title: " Senior Secondary (12th)",
+    title: " Senior Secondary",
     duration: "2016 - 2017",
     institution: "Punjab School Education Board, Mohali, Punjab",
   },
   {
     id: 4,
-    title: "Matriculation (10th)",
+    title: "Matriculation",
     duration: "2015 - 2016",
     institution: "Punjab School Education Board, Mohali, Punjab",
   }
