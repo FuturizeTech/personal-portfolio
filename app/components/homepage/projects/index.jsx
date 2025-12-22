@@ -11,17 +11,23 @@ const Projects = () => {
     offset: ["start end", "end start"]
   });
 
-  const scales = projectsData.map((_, index) => {
-    const start = index * 0.12;
-    const end = start + 0.12;
-    return useTransform(scrollYProgress, [start, end], [1, 0.95]);
-  });
+  const scales = [
+    useTransform(scrollYProgress, [0, 0.12], [1, 0.95]),
+    useTransform(scrollYProgress, [0.12, 0.24], [1, 0.95]),
+    useTransform(scrollYProgress, [0.24, 0.36], [1, 0.95]),
+    useTransform(scrollYProgress, [0.36, 0.48], [1, 0.95]),
+    useTransform(scrollYProgress, [0.48, 0.60], [1, 0.95]),
+    useTransform(scrollYProgress, [0.60, 0.72], [1, 0.95]),
+  ];
 
-  const ys = projectsData.map((_, index) => {
-    const start = index * 0.12;
-    const end = start + 0.12;
-    return useTransform(scrollYProgress, [start, end], [0, -120]);
-  });
+  const ys = [
+    useTransform(scrollYProgress, [0, 0.12], [0, -120]),
+    useTransform(scrollYProgress, [0.12, 0.24], [0, -120]),
+    useTransform(scrollYProgress, [0.24, 0.36], [0, -120]),
+    useTransform(scrollYProgress, [0.36, 0.48], [0, -120]),
+    useTransform(scrollYProgress, [0.48, 0.60], [0, -120]),
+    useTransform(scrollYProgress, [0.60, 0.72], [0, -120]),
+  ];
 
   return (
     <div id="projects" className="relative z-50 my-12 lg:my-24 w-full max-w-none -mx-6 sm:-mx-12" ref={containerRef}>
