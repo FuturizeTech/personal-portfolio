@@ -24,10 +24,10 @@ export const projectsData = [
     name: 'Impact Team Tennis (ITT)',
     description:
       'A sports event management web application developed for a U.S.-based client. I worked as a full-stack developer using Next.js and Supabase. The system allows tournament scheduling, team registration, score tracking, and real-time updates.',
-    tools: ['Next.js', 'Tailwind CSS', 'Supabase'],
+    tags: ['Next.js', 'Tailwind CSS', 'Supabase'],
     role: 'Full Stack Developer',
     code: '',
-    demo: '',
+    demo: 'https://impactteamtennis.com/',
   },
   {
     id: 4,
@@ -53,10 +53,11 @@ export const projectsData = [
     id: 6,
     name: 'Real Estate Listing Portal',
     description:
-      'A real estate portal that enables property listings, user inquiries, and admin management. Built using React for the frontend and Node.js for the backend. Integrated with Google Maps API for location tagging and search filtering.',
-    tools: ['React', 'Node.js', 'MongoDB', 'Google Maps API'],
+      'A comprehensive real estate portal featuring dynamic property listings, user inquiries, and admin management. Built with React for an interactive frontend and Node.js for robust backend services. Integrated Google Maps API for precise location tagging and advanced search filtering, enabling users to explore properties seamlessly. Experience the live portal showcasing modern real estate solutions.',
+    tags: ['React', 'Node.js', 'MongoDB', 'Google Maps API'],
     role: 'Full Stack Developer',
     code: '',
-    demo: '',
+    demo: 'https://happyhomez.in/',
+    image: { src: '/image/real-estate.jpg' },
   },
 ];

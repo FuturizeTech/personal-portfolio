@@ -6,9 +6,20 @@ import placeholder from '/public/png/placeholder.png';
 
 function ProjectCard({ project }) {
   const { name, description, tags, demo, code, image } = project;
+  const isRealEstate = name === 'Real Estate Listing Portal';
 
   return (
-    <div className="relative w-full max-w-5xl rounded-xl border border-[#1a1443] bg-gradient-to-r from-[#0d1224] to-[#0a0d37] group transition-all duration-500 hover:border-[#16f2b3] hover:shadow-[0_0_30px_#16f2b3] overflow-hidden">
+    <div className="relative w-full mx-auto rounded-xl border border-[#1a1443] bg-gradient-to-r from-[#0d1224] to-[#0a0d37] group transition-all duration-500 hover:border-[#16f2b3] hover:shadow-[0_0_30px_#16f2b3] overflow-hidden">
+      {/* Animated background effect */}
+      <div className="absolute inset-0 overflow-hidden rounded-xl">
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-pink-500 rounded-full opacity-40 animate-ping"></div>
+        <div className="absolute top-3/4 right-1/4 w-0.5 h-0.5 bg-violet-400 rounded-full opacity-30 animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-cyan-400 rounded-full opacity-50 animate-bounce"></div>
+        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-pink-300 rounded-full opacity-60 animate-ping"></div>
+        <div className="absolute bottom-1/2 right-1/2 w-0.5 h-0.5 bg-violet-500 rounded-full opacity-20 animate-pulse"></div>
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-pink-500/5 to-violet-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      </div>
 
       {/* Card header with neon dots */}
       <div className="flex px-6 py-4 relative">
@@ -20,6 +31,11 @@ function ProjectCard({ project }) {
         <p className="ml-12 text-[#16f2b3] text-lg lg:text-2xl text-center w-full font-semibold">
           {name}
         </p>
+        {isRealEstate && (
+          <div className="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-md text-xs font-bold">
+            Property Portal
+          </div>
+        )}
       </div>
 
       {/* Project image */}
@@ -40,21 +56,25 @@ function ProjectCard({ project }) {
 
       {/* Action buttons */}
       <div className="flex justify-between px-8 py-4">
-        <a
-          href={demo}
-          target="_blank"
-          className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#EFF3F4] text-[#EFF3F4] hover:outline hover:outline-2 hover:outline-[#16f2b3] transition-all duration-300"
-        >
-          <FaPlay size={18} />
-        </a>
+        {demo && (
+          <a
+            href={demo}
+            target="_blank"
+            className={`flex items-center justify-center ${isRealEstate ? 'px-4 py-2 rounded-md' : 'w-12 h-12 rounded-full'} border-2 border-[#EFF3F4] text-[#EFF3F4] hover:outline hover:outline-2 hover:outline-[#16f2b3] transition-all duration-300`}
+          >
+            {isRealEstate ? 'Explore Listings' : <FaPlay size={18} />}
+          </a>
+        )}
 
-        <a
-          href={code}
-          target="_blank"
-          className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#EFF3F4] text-[#EFF3F4] hover:outline hover:outline-2 hover:outline-[#16f2b3] transition-all duration-300"
-        >
-          <FaCode size={18} />
-        </a>
+        {code && (
+          <a
+            href={code}
+            target="_blank"
+            className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#EFF3F4] text-[#EFF3F4] hover:outline hover:outline-2 hover:outline-[#16f2b3] transition-all duration-300"
+          >
+            <FaCode size={18} />
+          </a>
+        )}
       </div>
 
       {/* Tags */}
