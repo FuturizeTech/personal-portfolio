@@ -11,6 +11,18 @@ const Projects = () => {
     offset: ["start end", "end start"]
   });
 
+  const scales = projectsData.map((_, index) => {
+    const start = index * 0.12;
+    const end = start + 0.12;
+    return useTransform(scrollYProgress, [start, end], [1, 0.95]);
+  });
+
+  const ys = projectsData.map((_, index) => {
+    const start = index * 0.12;
+    const end = start + 0.12;
+    return useTransform(scrollYProgress, [start, end], [0, -120]);
+  });
+
   return (
     <div id="projects" className="relative z-50 my-12 lg:my-24 w-full max-w-none -mx-6 sm:-mx-12" ref={containerRef}>
       {/* Section header */}
@@ -115,10 +127,8 @@ const Projects = () => {
 
         <div className="flex flex-col items-center relative z-10">
           {projectsData.map((project, index) => {
-            const start = index * 0.12;
-            const end = start + 0.12;
-            const scale = useTransform(scrollYProgress, [start, end], [1, 0.95]);
-            const y = useTransform(scrollYProgress, [start, end], [0, -120]);
+            const scale = scales[index];
+            const y = ys[index];
 
             return (
               <motion.div
