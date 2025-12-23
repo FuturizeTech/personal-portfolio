@@ -2,7 +2,7 @@
 // @flow strict
 import Image from 'next/image';
 import { FaCode, FaPlay } from 'react-icons/fa';
-import placeholder from '/public/png/placeholder.png';
+import { TbPlaceholder } from 'react-icons/tb';
 
 function ProjectCard({ project }) {
   const { name, description, tags, demo, code, image } = project;
@@ -40,19 +40,25 @@ function ProjectCard({ project }) {
 
       {/* Project image */}
       <div className="overflow-hidden border-t-[2px] border-indigo-900 relative px-6 py-6 lg:py-8 rounded-xl">
-        <Image
-          src={image?.src || placeholder}
-          alt={name}
-          width={1400}
-          height={600}
-          className="w-full h-72 lg:h-80 object-cover rounded-xl transition-all duration-700 group-hover:opacity-80"
-        />
+        {image?.src ? (
+          <Image
+            src={image.src}
+            alt={name}
+            width={1400}
+            height={600}
+            className="w-full h-72 lg:h-80 object-cover rounded-xl transition-all duration-700 group-hover:opacity-80"
+          />
+        ) : (
+          <div className="w-full h-72 lg:h-80 flex items-center justify-center bg-[#0f0b24] rounded-xl">
+            <TbPlaceholder size={60} className="text-gray-500" />
+          </div>
+        )}
 
-        {/* Project description overlay */}
         <p className="absolute top-0 left-0 w-[85%] p-6 bg-[#0f0b24]/90 text-[#EFF3F4] rounded-[0_25px_25px_0] text-sm md:text-base transition-transform duration-500 translate-x-[-100%] group-hover:translate-x-0">
           {description}
         </p>
       </div>
+        
 
       {/* Action buttons */}
       <div className="flex justify-between px-8 py-4">
