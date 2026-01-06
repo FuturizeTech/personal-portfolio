@@ -5,14 +5,14 @@ import Image from "next/image";
 import { BsPersonWorkspace } from "react-icons/bs";
 import experience from '../../../assets/lottie/code.json';
 import AnimationLottie from "../../helper/animation-lottie";
-import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";       
 import { motion } from "framer-motion";
 
 const GlowCard = dynamic(() => import("../../helper/glow-card"), { ssr: false });
 
 function Experience() {
   return (
-    <div id="experience" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+    <div id="experience" className="relative">
       {/* Background section image */}
       <Image
         src="/section.svg"
@@ -42,6 +42,7 @@ function Experience() {
             </div>
           </div>
 
+
           {/* Experience cards */}
           <div>
             <div className="flex flex-col gap-8">
@@ -54,24 +55,6 @@ function Experience() {
                     transition={{ duration: 0.6, delay: exp.id * 0.1 }}
                     className="relative p-3 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-500 shadow-lg"
                   >
-                    {/* Subtle animated background particles */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <span
-                          key={i}
-                          className="absolute bg-[#16f2b3] rounded-full opacity-50 animate-floating"
-                          style={{
-                            width: `${4 + Math.random() * 6}px`,
-                            height: `${4 + Math.random() * 6}px`,
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`,
-                          }}
-                        />
-                      ))}
-                    </div>
-
                     {/* Blur overlay for depth */}
                     <Image
                       src="/blur-23.svg"

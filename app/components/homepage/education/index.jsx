@@ -54,23 +54,6 @@ function Education() {
                     transition={{ duration: 0.6, delay: edu.id * 0.1 }}
                     className="relative p-3 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-500 shadow-lg bg-gradient-to-tr from-[#0d1224] to-[#0a0d37]"
                   >
-                    {/* Floating particles */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <span
-                          key={i}
-                          className="absolute bg-[#16f2b3] rounded-full opacity-50 animate-floating"
-                          style={{
-                            width: `${4 + Math.random() * 6}px`,
-                            height: `${4 + Math.random() * 6}px`,
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`,
-                          }}
-                        />
-                      ))}
-                    </div>
 
                     {/* Blur overlay */}
                     <Image

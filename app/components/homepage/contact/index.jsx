@@ -7,8 +7,13 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoGithub, IoMdCall } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
+import { FaSnapchat, FaInstagram } from "react-icons/fa";
 import ContactForm from './contact-form';
 import { motion } from 'framer-motion';
+import dynamic from "next/dynamic";
+import Image from "next/image";
+
+const GlowCard = dynamic(() => import("@/app/components/helper/glow-card"), { ssr: false });
 
 function ContactSection() {
   const infoCards = [
@@ -36,6 +41,8 @@ function ContactSection() {
     { href: personalData.github, icon: <IoLogoGithub size={40} />, gradient: 'from-gray-400 to-gray-700' },
     { href: personalData.linkedIn, icon: <BiLogoLinkedin size={40} />, gradient: 'from-blue-400 to-blue-700' },
     { href: personalData.twitter, icon: <FaXTwitter size={40} />, gradient: 'from-cyan-400 to-blue-500' },
+    { href: personalData.snapchat, icon: <FaSnapchat size={40} />, gradient: 'from-yellow-400 to-yellow-600' },
+    { href: personalData.instagram, icon: <FaInstagram size={40} />, gradient: 'from-pink-400 to-pink-600' },
   ];
 
   return (
@@ -59,21 +66,33 @@ function ContactSection() {
         {/* Contact Info */}
         <div className="flex flex-col gap-6 lg:gap-10">
           {infoCards.map(card => (
-            <motion.div
-              key={card.id}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: card.id * 0.1 }}
-              className={`group flex items-center gap-4 p-4 rounded-2xl backdrop-blur-md bg-[#10172d]/70 border border-[#353a52] shadow-lg cursor-pointer transition-all duration-300 hover:border-pink-500 hover:shadow-[0_0_20px_rgba(255,105,180,0.5)]`}
-            >
-              <div className={`w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r ${card.gradient} text-white shadow-lg transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,105,180,0.5)]`}>
-                {card.icon}
-              </div>
-              <p className="text-white font-medium break-all transition-colors duration-300 group-hover:text-pink-400">
-                {card.label}
-              </p>
-            </motion.div>
+            <GlowCard key={card.id} identifier={`contact-info-${card.id}`}>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: card.id * 0.1 }}
+                className="relative p-4 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-500 shadow-lg bg-gradient-to-tr from-[#0d1224] to-[#0a0d37]"
+              >
+                {/* Blur overlay */}
+                <Image
+                  src="/blur-23.svg"
+                  alt="Blur overlay"
+                  width={1080}
+                  height={200}
+                  className="absolute bottom-0 opacity-80 rounded-xl"
+                />
+
+                <div className="relative z-10 flex items-center gap-4">
+                  <div className={`w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-r ${card.gradient} text-white shadow-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,105,180,0.5)]`}>
+                    {card.icon}
+                  </div>
+                  <p className="text-white font-medium break-all transition-colors duration-300 hover:text-pink-400">
+                    {card.label}
+                  </p>
+                </div>
+              </motion.div>
+            </GlowCard>
           ))}
 
           {/* Social Links */}
@@ -82,7 +101,7 @@ function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center gap-5 lg:gap-8 mt-6"
+            className="flex items-center justify-center gap-5 lg:gap-8 mt-6"
           >
             {socialLinks.map((social, index) => (
               <Link key={index} target="_blank" href={social.href}>

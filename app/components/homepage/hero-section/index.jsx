@@ -8,11 +8,11 @@ import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
+import TiltCard from "@/app/components/helper/TiltCard";
 
 function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-between py-10 lg:py-20 overflow-hidden">
-      {/* Animated background */}
       <Image
         src="/hero.svg"
         alt="Hero"
@@ -120,7 +120,7 @@ function HeroSection() {
             <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
           </div>
 
-          <div className="order-1 lg:order-2 from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37]">
+          <TiltCard className="class-card-tilt order-1 lg:order-2 from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37]">
             <div className="flex flex-row">
               <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
               <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
@@ -209,7 +209,7 @@ function HeroSection() {
                 <div><span className="text-gray-400">{`};`}</span></div>
               </code>
             </div>
-          </div>
+          </TiltCard>
         </motion.div>
       </div>
     </section>

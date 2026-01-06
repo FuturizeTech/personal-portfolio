@@ -1,14 +1,15 @@
 export const projectsData = [
-  {
-    id: 1,
-    name: 'Blog Management System',
-    description:
-      'A dynamic content-sharing platform inspired by Instagram, built using Core PHP and MySQL. Users can upload, edit, and manage images and videos. This was my first full-stack project where I implemented user authentication, post management, and media handling.',
-    tools: ['Core PHP', 'MySQL'],
-    role: 'Full Stack Developer',
-    code: '',
-    demo: '',
-  },
+  // {
+  //   id: 1,
+  //   name: 'Blog Management System',
+  //   description:
+  //     'A dynamic content-sharing platform inspired by Instagram, built using Core PHP and MySQL. Users can upload, edit, and manage images and videos. This was my first full-stack project where I implemented user authentication, post management, and media handling.',
+  //   tools: ['Core PHP', 'MySQL'],
+  //   role: 'Full Stack Developer',
+  //   code: '',
+  //   demo: '',
+  //   image: { src: '/image/real-estate.jpg' },
+  // },
   {
     id: 2,
     name: "Prospec'd",
@@ -17,7 +18,9 @@ export const projectsData = [
     tools: ['Laravel', 'MySQL', 'AWS SES'],
     role: 'Backend Developer',
     code: '',
-    demo: '',
+    demo: '', 
+    image: { src: '/image/real-estate.jpg' },
+
   },
   {
     id: 3,
@@ -28,27 +31,33 @@ export const projectsData = [
     role: 'Full Stack Developer',
     code: '',
     demo: 'https://impactteamtennis.com/',
+    image: { src: '/image/real-estate.jpg' },
+
   },
-  {
-    id: 4,
-    name: 'E-commerce Storefront (Mini Mart)',
-    description:
-      'A feature-rich Laravel-based e-commerce website that includes product listings, user authentication, cart management, and payment gateway integration using Razorpay. I also implemented order tracking and admin panel functionalities.',
-    tools: ['Laravel', 'MySQL', 'AJAX', 'Razorpay API'],
-    role: 'Full Stack Developer',
-    code: '',
-    demo: '',
-  },
-  {
-    id: 5,
-    name: 'Resume & Cover Letter Generator (SaaS)',
-    description:
-      'A SaaS platform where users can generate professional resumes and cover letters. Implemented subscription-based access, PDF generation, live preview, and dynamic templates. Built using Laravel with Vue.js on the frontend.',
-    tools: ['Laravel', 'Vue.js', 'Stripe', 'Tailwind CSS'],
-    role: 'Full Stack Developer',
-    code: '',
-    demo: '',
-  },
+  // {
+  //   id: 4,
+  //   name: 'E-commerce Storefront (Mini Mart)',
+  //   description:
+  //     'A feature-rich Laravel-based e-commerce website that includes product listings, user authentication, cart management, and payment gateway integration using Razorpay. I also implemented order tracking and admin panel functionalities.',
+  //   tools: ['Laravel', 'MySQL', 'AJAX', 'Razorpay API'],
+  //   role: 'Full Stack Developer',
+  //   code: '',
+  //   demo: '',
+  //   image: { src: '/image/real-estate.jpg' },
+
+  // },
+  // {
+  //   id: 5,
+  //   name: 'Resume & Cover Letter Generator (SaaS)',
+  //   description:
+  //     'A SaaS platform where users can generate professional resumes and cover letters. Implemented subscription-based access, PDF generation, live preview, and dynamic templates. Built using Laravel with Vue.js on the frontend.',
+  //   tools: ['Laravel', 'Vue.js', 'Stripe', 'Tailwind CSS'],
+  //   role: 'Full Stack Developer',
+  //   code: '',
+  //   demo: '',
+  //   image: { src: '/image/real-estate.jpg' },
+
+  // },
   {
     id: 6,
     name: 'Real Estate Listing Portal',

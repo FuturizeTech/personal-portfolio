@@ -21,12 +21,6 @@ async function getData() {
 }
 
 export default function Home() {
-  const [blogs, setBlogs] = useState([]);
-
-  useEffect(() => {
-    getData().then(setBlogs).catch(console.error);
-  }, []);
-
   return (
     <main className="pt-24">
       <div suppressHydrationWarning>

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaCode, FaPlay } from 'react-icons/fa';      
+import { FaCode, FaPlay } from 'react-icons/fa';
+import placeholder from '/public/png/placeholder.png';
 
 const SingleProject = ({ project }) => {
   const { name, description, tags, code, demo, image, features } = project;
@@ -40,7 +41,7 @@ const SingleProject = ({ project }) => {
         </h2>
         <div className="p-6">
           <Image
-            src={ image?.src }
+            src={image ? image?.src : placeholder}
             alt={name}
             width={1080}
             height={720}
@@ -54,7 +55,7 @@ const SingleProject = ({ project }) => {
             className="flex justify-center items-center w-10 h-10 rounded-full border-2 border-[#EFF3F4] text-[#EFF3F4] transition-all duration-300 hover:bg-[#231d4b] hover:text-violet-600 hover:border-[#0F0C41] hover:scale-110 decoration-clone cursor-pointer no-underline delay-[0.3s]">
             <FaPlay />
           </Link>
-          
+
           <Link
             href={code}
             target='_blank'

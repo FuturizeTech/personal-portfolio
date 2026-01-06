@@ -9,6 +9,8 @@ export const personalData = {
   github: 'https://github.com/FuturizeTech',
   linkedIn: 'https://www.linkedin.com/in/sarabjeet-singh-a642a0241/',
   twitter: 'https://x.com/itz_saabii',
+  snapchat: 'https://snapchat.com/add/sarabjeet-001',
+  instagram: 'https://instagram.com/itz_saabii',
   devUsername: "saabii",
   resume: "/new-resume.pdf",
 }

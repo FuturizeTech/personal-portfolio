@@ -6,13 +6,16 @@ import Image from "next/image";
 function AboutSection() {
   return (
     <div id="about" className="my-12 lg:my-16 relative">
+      {/* SIDE LABEL */}
       <div className="hidden lg:flex flex-col items-center absolute top-16 -right-8">
         <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
           ABOUT ME
         </span>
         <span className="h-36 w-[2px] bg-[#1a1443]"></span>
       </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+        {/* TEXT */}
         <div className="order-2 lg:order-1">
           <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
             Who I am?
@@ -21,25 +24,48 @@ function AboutSection() {
             {personalData.description}
           </p>
         </div>
-        <div className="flex justify-center order-1 lg:order-2 relative">
-          <div className="relative">
-            {/* Solar system circles */}
-            <div className="absolute inset-0 rounded-full border-2 border-[#16f2b3] opacity-50 animate-spin-slow"></div>
-            <div className="absolute inset-4 rounded-full border-2 border-[#d50c0c] opacity-50 animate-spin-reverse"></div>
+
+        {/* IMAGE + TILTED ORBITS */}
+        <div className="flex justify-center order-1 lg:order-2">
+          <div className="relative w-[260px] h-[260px] flex items-center justify-center overflow-visible">
+
+            {/* BACK ORBIT */}
+            <div className="orbit-wrapper orbit-back">
+              <div className="orbit animate-spin-slow border-purple-500" />
+            </div>
+
+            {/* INNER BACK ORBIT */}
+            <div className="orbit-wrapper orbit-back orbit-inner">
+              <div className="orbit animate-spin-reverse border-pink-500" />
+            </div>
+
+            {/* IMAGE */}
             <Image
               src={personalData.profile}
               width={200}
               height={200}
               alt="Sarabjeet Singh"
               unoptimized
-              className="rounded-3xl transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-105 cursor-pointer clip-path-[polygon(0%_0%,100%_0%,100%_85%,95%_90%,90%_85%,85%_95%,80%_90%,75%_100%,70%_90%,65%_95%,60%_85%,55%_90%,50%_80%,45%_85%,40%_75%,35%_80%,30%_70%,25%_75%,20%_65%,15%_70%,10%_60%,5%_65%,0%_55%)]"
+              className="relative z-10 rounded-3xl transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-105"
             />
+
+            {/* FRONT ORBIT */}
+            <div className="orbit-wrapper orbit-front">
+              <div className="orbit animate-spin-slow border-purple-500 orbit-purple" />
+            </div>
+
+            {/* INNER FRONT ORBIT */}
+            <div className="orbit-wrapper orbit-front orbit-inner">
+              <div className="orbit animate-spin-reverse border-pink-500 orbit-pink" />
+            </div>
+
           </div>
         </div>
       </div>
 
-      {/* Custom animations */}
+      {/* STYLES */}
       <style jsx>{`
+        /* ================= Animations ================= */
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
@@ -53,6 +79,73 @@ function AboutSection() {
         }
         .animate-spin-reverse {
           animation: spin-reverse 15s linear infinite;
+        }
+
+        /* ================= Orbit System ================= */
+
+        /* Wrapper = TILT (3D illusion) */
+        .orbit-wrapper {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300px;
+          height: 300px; /* elliptical height */
+          margin-left: -150px; /* half width */
+          margin-top: -100px;  /* half height */
+          transform: rotateX(65deg); /* tilt orbit */
+          transform-origin: center;
+          pointer-events: none;
+        }
+
+        /* INNER orbit = smaller ellipse */
+        .orbit-inner {
+          width: 300px;
+          height:300px;
+          margin-left: -150px;
+          margin-top: -80px;
+        }
+
+        /* Actual orbit ring = border only, rotation handled by animation */
+        .orbit {
+          position: absolute;
+          inset: 0;
+          border: 2px solid #9b5de5;
+          border-radius: 50%;
+        }
+.orbit-purple {
+  border: 2px solid #9b5de5; /* purple */
+}
+
+.orbit-pink {
+  border: 2px solid #f15bb5; /* pink */
+}
+
+
+        /* Back half */
+        .orbit-back {
+          z-index: 0;
+          opacity: 0.35;
+          filter: blur(0.4px);
+        }
+
+        /* Front half = mask */
+        .orbit-front {
+          z-index: 20;
+          opacity: 0.75;
+          mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 45%,
+            black 55%,
+            black 100%
+          );
+          -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 45%,
+            black 55%,
+            black 100%
+          );
         }
       `}</style>
     </div>
