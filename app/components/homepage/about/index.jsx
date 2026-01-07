@@ -25,18 +25,19 @@ function AboutSection() {
           </p>
         </div>
 
-        {/* IMAGE + TILTED ORBITS */}
+        {/* IMAGE + ORBITS */}
         <div className="flex justify-center order-1 lg:order-2">
-          <div className="relative w-[260px] h-[260px] flex items-center justify-center overflow-visible">
+          {/* 👇 group added ONLY for hover detection */}
+          <div className="relative w-[260px] h-[260px] flex items-center justify-center overflow-visible group">
 
             {/* BACK ORBIT */}
             <div className="orbit-wrapper orbit-back">
-              <div className="orbit animate-spin-slow border-purple-500" />
+              <div className="orbit animate-spin-slow orbit-purple" />
             </div>
 
             {/* INNER BACK ORBIT */}
             <div className="orbit-wrapper orbit-back orbit-inner">
-              <div className="orbit animate-spin-reverse border-pink-500" />
+              <div className="orbit animate-spin-reverse orbit-pink" />
             </div>
 
             {/* IMAGE */}
@@ -46,17 +47,17 @@ function AboutSection() {
               height={200}
               alt="Sarabjeet Singh"
               unoptimized
-              className="relative z-10 rounded-3xl transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-105"
+              className="relative z-10 rounded-3xl transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
             />
 
             {/* FRONT ORBIT */}
             <div className="orbit-wrapper orbit-front">
-              <div className="orbit animate-spin-slow border-purple-500 orbit-purple" />
+              <div className="orbit animate-spin-slow orbit-purple" />
             </div>
 
             {/* INNER FRONT ORBIT */}
             <div className="orbit-wrapper orbit-front orbit-inner">
-              <div className="orbit animate-spin-reverse border-pink-500 orbit-pink" />
+              <div className="orbit animate-spin-reverse orbit-pink" />
             </div>
 
           </div>
@@ -81,54 +82,52 @@ function AboutSection() {
           animation: spin-reverse 15s linear infinite;
         }
 
-        /* ================= Orbit System ================= */
-
-        /* Wrapper = TILT (3D illusion) */
+        /* ================= Orbit System (UNCHANGED) ================= */
         .orbit-wrapper {
           position: absolute;
           top: 50%;
           left: 50%;
           width: 300px;
-          height: 300px; /* elliptical height */
-          margin-left: -150px; /* half width */
-          margin-top: -100px;  /* half height */
-          transform: rotateX(65deg); /* tilt orbit */
+          height: 300px;
+          margin-left: -150px;
+          margin-top: -100px;
+          transform: rotateX(65deg);
           transform-origin: center;
           pointer-events: none;
         }
 
-        /* INNER orbit = smaller ellipse */
         .orbit-inner {
           width: 300px;
-          height:300px;
+          height: 300px;
           margin-left: -150px;
           margin-top: -80px;
         }
 
-        /* Actual orbit ring = border only, rotation handled by animation */
         .orbit {
           position: absolute;
           inset: 0;
-          border: 2px solid #9b5de5;
           border-radius: 50%;
+          transition:
+            border-width 0.4s ease,
+            filter 0.4s ease,
+            opacity 0.4s ease;
         }
-.orbit-purple {
-  border: 2px solid #9b5de5; /* purple */
-}
 
-.orbit-pink {
-  border: 2px solid #f15bb5; /* pink */
-}
+        .orbit-purple {
+          border: 2px solid #9b5de5;
+        }
 
+        .orbit-pink {
+          border: 2px solid #f15bb5;
+        }
 
-        /* Back half */
+        /* ================= DEPTH ================= */
         .orbit-back {
           z-index: 0;
           opacity: 0.35;
           filter: blur(0.4px);
         }
 
-        /* Front half = mask */
         .orbit-front {
           z-index: 20;
           opacity: 0.75;
@@ -146,6 +145,24 @@ function AboutSection() {
             black 55%,
             black 100%
           );
+        }
+
+        /* ================= HOVER GLOW (NO POSITION CHANGE) ================= */
+
+        .group:hover .orbit-purple {
+          border-width: 4px; /* wider ring */
+          filter:
+            drop-shadow(0 0 10px #9b5de5)
+            drop-shadow(0 0 20px rgba(155,93,229,0.8));
+          opacity: 1;
+        }
+
+        .group:hover .orbit-pink {
+          border-width: 4px; /* wider ring */
+          filter:
+            drop-shadow(0 0 10px #f15bb5)
+            drop-shadow(0 0 20px rgba(241,91,181,0.8));
+          opacity: 1;
         }
       `}</style>
     </div>

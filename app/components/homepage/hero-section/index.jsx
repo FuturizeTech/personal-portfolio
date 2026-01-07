@@ -12,7 +12,7 @@ import TiltCard from "@/app/components/helper/TiltCard";
 
 function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-between py-10 lg:py-20 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-between py-2 lg:py-2 overflow-hidden">
       <Image
         src="/hero.svg"
         alt="Hero"

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { BsPersonWorkspace } from "react-icons/bs";
 import experience from '../../../assets/lottie/code.json';
 import AnimationLottie from "../../helper/animation-lottie";
-import dynamic from "next/dynamic";       
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 
 const GlowCard = dynamic(() => import("../../helper/glow-card"), { ssr: false });
@@ -23,7 +23,7 @@ function Experience() {
       />
 
       {/* Section title */}
-      <div className="flex justify-center my-5 lg:py-8">
+      <div className="flex justify-center my-5 lg:py-5">
         <div className="flex items-center gap-4">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
           <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
@@ -33,7 +33,7 @@ function Experience() {
         </div>
       </div>
 
-      <div className="py-8">
+      <div className="py-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Lottie animation */}
           <div className="flex justify-center items-start">
@@ -86,18 +86,6 @@ function Experience() {
           </div>
         </div>
       </div>
-
-      {/* Floating animation for particles */}
-      <style jsx>{`
-        @keyframes floating {
-          0% { transform: translateY(0) scale(1); opacity: 0.7; }
-          50% { transform: translateY(-15px) scale(1.2); opacity: 1; }
-          100% { transform: translateY(-40px) scale(1); opacity: 0; }
-        }
-        .animate-floating {
-          animation: floating infinite ease-in-out;
-        }
-      `}</style>
     </div>
   );
 }
