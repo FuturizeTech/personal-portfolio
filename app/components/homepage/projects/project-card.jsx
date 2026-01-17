@@ -5,7 +5,7 @@ import * as React from 'react';
 function ProjectCard({ project }) {
 
   return (
-    <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
+    <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 transform hover:-translate-y-1">
       <div className="flex flex-row">
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
         <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
@@ -40,7 +40,7 @@ function ProjectCard({ project }) {
             <span className="text-gray-400">{` ['`}</span>
             {
               project.tools?.map((tag, i) => (
-                <React.Fragment key={i}>
+                <React.Fragment key={i}> 
                   <span className="text-amber-300">{tag}</span>
                   {
                     project.tools?.length - 1 !== i &&
@@ -64,6 +64,21 @@ function ProjectCard({ project }) {
           <div><span className="text-gray-400">{`};`}</span></div>
         </code>
       </div>
+      {project.demo && (
+        <div className="px-6 lg:px-10 pb-6">
+          <a 
+            href={project.demo} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center bg-gradient-to-r from-pink-500 to-violet-600 text-white font-semibold py-2 px-6 rounded-lg hover:from-pink-600 hover:to-violet-700 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/50"
+          >
+            <span>View Live Demo</span>
+            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      )}
     </div>
   );
 };
