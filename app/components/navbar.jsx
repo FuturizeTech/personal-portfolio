@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import Image from "next/image";
 import Logo from '@/public/trace.svg';
 import { motion } from 'framer-motion';
+import { translations } from '@/utils/translations';
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,13 +18,13 @@ function Navbar() {
   }, []);
 
   const navItems = [
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'education', label: 'Education' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'projects-for-sale', label: 'Projects For Sale' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'about', label: translations.navbar.about },
+    { id: 'experience', label: translations.navbar.experience },
+    { id: 'skills', label: translations.navbar.skills },
+    { id: 'education', label: translations.navbar.education },
+    { id: 'projects', label: translations.navbar.projects },
+    { id: 'projects-for-sale', label: translations.navbar.projectsForSale },
+    { id: 'contact', label: translations.navbar.contact },
   ];
 
   return (

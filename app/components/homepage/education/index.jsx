@@ -7,6 +7,7 @@ import { BsPersonWorkspace } from "react-icons/bs";
 import lottieFile from '../../../assets/lottie/study.json';
 import AnimationLottie from "../../helper/animation-lottie";
 import { motion } from "framer-motion";
+import { translations } from "@/utils/translations";
 
 const GlowCard = dynamic(() => import("@/app/components/helper/glow-card"), { ssr: false });
 
@@ -27,7 +28,7 @@ function Education() {
         <div className="flex items-center gap-4">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
           <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Education
+            {translations.education.title}
           </span>
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>

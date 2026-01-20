@@ -1,0 +1,72 @@
+{
+    "hero": {
+        "greeting": "Hello, 👋",
+        "introduction": "I’m ",
+        "description": "I build high-quality Laravel applications with modern APIs, secure backends, and lightning-fast performance — helping businesses scale efficiently.",
+        "workTogether": "Let’s Work Together",
+        "getResume": "Get Resume",
+        "roles": [
+            "Laravel Developer",
+            "API Integration Expert",
+            "Backend Specialist",
+            "Node Js Enthusiast",
+            "Full-Stack Developer",
+            "SEO Conscious Coder",
+            "Problem Solver",
+            "Freelancer on a Mission 🚀"
+        ]
+    },
+    "about": {
+        "title": "ABOUT ME",
+        "question": "Who I am?"
+    },
+    "skills": {
+        "title": "Skills"
+    },
+    "experience": {
+        "title": "Experiences"
+    },
+    "education": {
+        "title": "Education"
+    },
+    "projects": {
+        "title": "PROJECTS",
+        "viewCode": "View Code",
+        "viewLiveDemo": "Visit Site",
+        "demoNotAvailable": "Demo Not Available"
+    },
+    "projectsForSale": {
+        "title": "PROJECTS FOR SALE",
+        "description": "Full source code, setup support & customization available.",
+        "contactToBuy": "Contact to Buy"
+    },
+    "contact": {
+        "title": "CONTACT",
+        "contactMe": "Contact Me",
+        "description": "If you have any questions or work opportunities, feel free to contact me. I am open to exciting projects aligned with my skills.",
+        "yourName": "Your Name",
+        "yourEmail": "Your Email",
+        "yourMessage": "Your Message",
+        "invalidEmail": "Please enter a valid email",
+        "requiredFields": "All fields are required!",
+        "sending": "Sending...",
+        "sendMessage": "Send Message",
+        "placeholders": {
+            "name": "Sarabjeet Singh",
+            "email": "youremail@email.com",
+            "message": "Write your message..."
+        }
+    },
+    "navbar": {
+        "about": "About",
+        "experience": "Experience",
+        "skills": "Skills",
+        "education": "Education",
+        "projects": "Projects",
+        "projectsForSale": "Projects For Sale",
+        "contact": "Contact"
+    },
+    "footer": {
+        "copyright": "© Developer Portfolio by "
+    }
+}

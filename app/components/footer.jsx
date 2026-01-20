@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { CgGitFork } from "react-icons/cg";
 import { IoStar } from "react-icons/io5";
+import { translations } from '@/utils/translations';
 
 function Footer() {
   return (
@@ -12,13 +13,12 @@ function Footer() {
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm">
-            © Developer Portfolio by <Link target="_blank" href="https://www.linkedin.com/in/sarabjeet-singh-a642a0241/" className="text-[#16f2b3]">Sarabjeet Singh</Link>
+            {translations.footer.copyright} <Link target="_blank" href="https://www.linkedin.com/in/sarabjeet-singh-a642a0241/" className="text-[#16f2b3]">Sarabjeet Singh</Link>
           </p>
-         
         </div>
       </div>
     </div >
   );
-};
+}
 
 export default Footer;

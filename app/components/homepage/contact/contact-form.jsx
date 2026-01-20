@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { translations } from "@/utils/translations";
 
 const GlowCard = dynamic(() => import("@/app/components/helper/glow-card"), { ssr: false });
 
@@ -39,8 +40,8 @@ function ContactForm() {
 
     try {
       setIsLoading(true);
-      await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, userInput);
-      toast.success("Message sent successfully!");
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, userInput);
+      toast.success(response.data.message || "Message sent successfully!");
       setUserInput({ name: "", email: "", message: "" });
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong!");
@@ -72,15 +73,15 @@ function ContactForm() {
         <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-violet-500/20 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
 
         <div className="relative z-10">
-          <p className="font-bold mb-3 text-[#f216e0] text-xl uppercase tracking-wider text-center lg:text-left">Contact Me</p>
+          <p className="font-bold mb-3 text-[#f216e0] text-xl uppercase tracking-wider text-center lg:text-left">{translations.contact.contactMe}</p>
           <p className="text-sm text-[#d3d8e8] text-center lg:text-left mb-3">
-            If you have any questions or work opportunities, feel free to contact me. I am open to exciting projects aligned with my skills.
+            {translations.contact.description}
           </p>
 
           <div className="flex flex-col gap-5">
             {/* Name */}
             <div className="flex flex-col gap-2">
-              <label className="text-white font-medium">Your Name</label>
+              <label className="text-white font-medium">{translations.contact.yourName}</label>
               <input
                 type="text"
                 maxLength="100"
@@ -89,13 +90,13 @@ function ContactForm() {
                 onChange={(e) => setUserInput({ ...userInput, name: e.target.value })}
                 onBlur={checkRequired}
                 className="bg-[#10172d] w-full border border-[#353a52] rounded-xl px-2 py-2 text-white focus:border-[#16f2b3] focus:ring-1 focus:ring-[#16f2b3] transition-all duration-300 placeholder:text-gray-400"
-                placeholder="Sarabjeet Singh"   
+                placeholder={translations.contact.placeholders.name}   
               />
             </div>
 
             {/* Email */}
             <div className="flex flex-col gap-2">
-              <label className="text-white font-medium">Your Email</label>
+              <label className="text-white font-medium">{translations.contact.yourEmail}</label>
               <input
                 type="email"
                 maxLength="100"
@@ -104,14 +105,14 @@ function ContactForm() {
                 onChange={(e) => setUserInput({ ...userInput, email: e.target.value })}
                 onBlur={() => setError({ ...error, email: !isValidEmail(userInput.email) })}
                 className="bg-[#10172d] w-full border border-[#353a52] rounded-xl px-2 py-2 text-white focus:border-[#16f2b3] focus:ring-1 focus:ring-[#16f2b3] transition-all duration-300 placeholder:text-gray-400"
-                placeholder="youremail@email.com"
+                placeholder={translations.contact.placeholders.email}
               />
-              {error.email && <p className="text-red-400 text-sm">Please enter a valid email</p>}
+              {error.email && <p className="text-red-400 text-sm">{translations.contact.invalidEmail}</p>}
             </div>
 
             {/* Message */}
             <div className="flex flex-col gap-2">
-              <label className="text-white font-medium">Your Message</label>
+              <label className="text-white font-medium">{translations.contact.yourMessage}</label>
               <textarea
                 rows={5}
                 maxLength="500"
@@ -120,19 +121,19 @@ function ContactForm() {
                 onChange={(e) => setUserInput({ ...userInput, message: e.target.value })}
                 onBlur={checkRequired}
                 className="bg-[#10172d] w-full border border-[#353a52] rounded-xl px-4 py-2 text-white focus:border-[#16f2b3] focus:ring-1 focus:ring-[#16f2b3] transition-all duration-300 placeholder:text-gray-400 resize-none"
-                placeholder="Write your message..."
+                placeholder={translations.contact.placeholders.message}
               />
             </div>
 
-            {error.required && <p className="text-red-400 text-sm text-center">All fields are required!</p>}
+            {error.required && <p className="text-red-400 text-sm text-center">{translations.contact.requiredFields}</p>}
 
             <button
               onClick={handleSendMail}
               disabled={isLoading}
               className="relative overflow-hidden rounded-full bg-gradient-to-r from-pink-500 to-violet-600 text-white font-semibold uppercase tracking-wide py-2 px-4 flex items-center justify-center gap-3 hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              {isLoading ? "Sending..." : <>
-                Send Message
+              {isLoading ? translations.contact.sending : <>
+                {translations.contact.sendMessage}
                 <TbMailForward size={20} />
               </>}
               <span className="absolute inset-0 bg-white/10 rounded-full opacity-0 hover:opacity-30 transition-all duration-500"></span>

@@ -9,9 +9,12 @@ import { RiContactsFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import TiltCard from "@/app/components/helper/TiltCard";
+import { translations } from "@/utils/translations";
 
 function HeroSection() {
+
   return (
+
     <section className="relative flex flex-col items-center justify-between py-2 lg:py-2 overflow-hidden">
       <Image
         src="/hero.svg"
@@ -34,8 +37,9 @@ function HeroSection() {
           className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10"
         >
           <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
-            Hello, 👋<br />
-            I’m{' '}
+            {translations.hero.greeting}
+            <br />
+            {translations.hero.introduction}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-600">
               {personalData.name}
             </span>
@@ -43,16 +47,7 @@ function HeroSection() {
             <span className="text-[#16f2b3]">
               <Typewriter
                 options={{
-                  strings: [
-                    "Laravel Developer",
-                    "API Integration Expert",
-                    "Backend Specialist",
-                    "Node Js Enthusiast",
-                    "Full-Stack Developer",
-                    "SEO Conscious Coder",
-                    "Problem Solver",
-                    "Freelancer on a Mission 🚀"
-                  ],
+                  strings: translations.hero.roles,
                   autoStart: true,
                   loop: true,
                   deleteSpeed: 40,
@@ -60,11 +55,8 @@ function HeroSection() {
               />
             </span>
           </h1>
-
           <p className="text-gray-300 mt-6 text-sm md:text-base max-w-lg">
-            I build high-quality Laravel applications with modern APIs,
-            secure backends, and lightning-fast performance — helping
-            businesses scale efficiently.
+            {translations.hero.description}
           </p>
 
           {/* Social Icons */}
@@ -92,7 +84,7 @@ function HeroSection() {
               className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600"
             >
               <button className="px-4 md:px-8 py-3 bg-[#0d1224] rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider text-white flex items-center gap-2 hover:gap-3">
-                <span>Let’s Work Together</span>
+                <span>{translations.hero.workTogether}</span>
                 <RiContactsFill size={16} />
               </button>
             </Link>
@@ -102,7 +94,7 @@ function HeroSection() {
               target="_blank"
               href={personalData.resume}
             >
-              <span>Get Resume</span>
+              <span>{translations.hero.getResume}</span>
               <MdDownload size={16} />
             </Link>
           </div>

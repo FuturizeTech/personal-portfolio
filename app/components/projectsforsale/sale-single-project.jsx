@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { FaPhone } from 'react-icons/fa';
 import { useState } from 'react';
+import { translations } from '@/utils/translations';
 
 const SaleSingleProjects = ({ project }) => {
     const [index, setIndex] = useState(0);
@@ -59,7 +60,7 @@ const SaleSingleProjects = ({ project }) => {
                 </p>
 
                 <p className="text-gray-400 italic text-sm">
-                    Full source code, setup support & customization available.
+                    {translations.projectsForSale.description}
                 </p>
 
                 <a
@@ -68,7 +69,7 @@ const SaleSingleProjects = ({ project }) => {
           bg-violet-500 text-black font-semibold rounded-xl
           hover:bg-violet-400 transition"
                 >
-                    <FaPhone /> Contact to Buy
+                    <FaPhone /> {translations.projectsForSale.contactToBuy}
                 </a>
             </div>
 

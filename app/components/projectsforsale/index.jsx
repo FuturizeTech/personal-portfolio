@@ -2,6 +2,7 @@
 
 import SaleProjectCard from './sale-project-card';
 import { saleProjects } from '@/utils/data/sale-projects';
+import { translations } from '@/utils/translations';
 
 const ProjectsForSale = () => {
   return (
@@ -13,7 +14,7 @@ const ProjectsForSale = () => {
 
         <div className="flex items-center justify-start relative">
           <span className="bg-[#1a1443] absolute left-0 text-white px-5 py-3 text-xl rounded-md">
-            PROJECTS FOR SALE
+            {translations.projectsForSale.title}
           </span>
           <span className="w-full h-[2px] bg-[#1a1443]" />
         </div>

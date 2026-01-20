@@ -2,6 +2,7 @@
 "use client";
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
+import { translations } from "@/utils/translations";
 
 function AboutSection() {
   return (
@@ -9,7 +10,7 @@ function AboutSection() {
       {/* SIDE LABEL */}
       <div className="hidden lg:flex flex-col items-center absolute top-8 -right-8">
         <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
-          ABOUT ME
+          {translations.about.title}
         </span>
         <span className="h-36 w-[2px] bg-[#1a1443]"></span>
       </div>
@@ -18,7 +19,7 @@ function AboutSection() {
         {/* TEXT */}
         <div className="order-2 lg:order-1">
           <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
-            Who I am?
+            {translations.about.question}
           </p>
           <p className="text-gray-200 text-sm lg:text-lg">
             {personalData.description}

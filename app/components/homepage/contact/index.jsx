@@ -12,6 +12,7 @@ import ContactForm from './contact-form';
 import { motion } from 'framer-motion';
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { translations } from '@/utils/translations';
 
 const GlowCard = dynamic(() => import("@/app/components/helper/glow-card"), { ssr: false });
 
@@ -50,7 +51,7 @@ function ContactSection() {
       {/* Section title for desktop */}
       <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8 z-10">
         <span className="bg-[#1a1443] text-white rotate-90 p-2 px-5 text-xl rounded-md">
-          CONTACT
+          {translations.contact.title}
         </span>
         <span className="h-36 w-[2px] bg-[#1a1443]"></span>
       </div>
