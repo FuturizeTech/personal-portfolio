@@ -62,23 +62,16 @@ export async function POST(request) {
       emailSuccess = await sendEmail(payload, message);
     }
 
-    // Store in Firebase
+    // Store in Firebase - only if environment variables are available
     let firebaseSuccess = false;
-    try {
-      const { initializeFirebaseAdmin } = await import('@/src/lib/firebase-admin');
-      const db = initializeFirebaseAdmin();
-      await db.collection('contacts').add({
-        name,
-        email,
-        message: userMessage,
-        timestamp: new Date(),
-        emailSent: emailSuccess,
-      });
-
-      firebaseSuccess = true;
-    } catch (error) {
-      console.error('Error storing in Firebase:', error);
-      // Don't fail the request if Firebase fails
+    if (process.env.FIREBASE_PRIVATE_KEY && process.env.FIREBASE_PROJECT_ID) {
+      try {
+        const { storeContactMessage } = await import('./firebase-handler.js');
+        firebaseSuccess = await storeContactMessage(name, email, userMessage, emailSuccess);
+      } catch (error) {
+        console.error('Error storing in Firebase:', error);
+        // Don't fail the request if Firebase fails
+      }
     }
 
     if (firebaseSuccess) {
