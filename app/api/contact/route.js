@@ -2,11 +2,6 @@ export const runtime = 'nodejs';
 
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-// import { db } from '@/lib/firebase';
-// import { addDoc, collection } from 'firebase/firestore';
-import { adminDb } from '@/src/lib/firebase-admin';
-
-// Create and configure Nodemailer transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
@@ -18,7 +13,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// HTML email template
 const generateEmailTemplate = (name, email, userMessage) => `
   <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f4f4f4;">
     <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
@@ -34,7 +28,6 @@ const generateEmailTemplate = (name, email, userMessage) => `
   </div>
 `;
 
-// Helper function to send an email via Nodemailer
 async function sendEmail(payload, message) {
   const { name, email, message: userMessage } = payload;
 
@@ -63,7 +56,7 @@ export async function POST(request) {
 
     const message = `New message from ${name}\n\nEmail: ${email}\n\nMessage:\n\n${userMessage}\n\n`;
 
-    // Send email (optional)
+    // Send email
     let emailSuccess = false;
     if (process.env.EMAIL_ADDRESS && process.env.GMAIL_PASSKEY) {
       emailSuccess = await sendEmail(payload, message);
@@ -72,7 +65,9 @@ export async function POST(request) {
     // Store in Firebase
     let firebaseSuccess = false;
     try {
-      await adminDb.collection('contacts').add({
+      const { initializeFirebaseAdmin } = await import('@/src/lib/firebase-admin');
+      const db = initializeFirebaseAdmin();
+      await db.collection('contacts').add({
         name,
         email,
         message: userMessage,
