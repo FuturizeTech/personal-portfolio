@@ -2,6 +2,7 @@
 import { GoogleTagManager } from "@next/third-parties/google";
 
 import '@fontsource/inter/index.css';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import "./css/card.scss";
 import "./css/globals.scss";
