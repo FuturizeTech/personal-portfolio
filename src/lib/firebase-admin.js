@@ -12,14 +12,10 @@ const initializeFirebaseAdmin = () => {
 
   let privateKey;
   try {
-    // Try parsing as JSON first (in case it's stored as JSON string)
     privateKey = JSON.parse(privateKeyRaw);
   } catch (e) {
-    // Fallback to string processing
     privateKey = privateKeyRaw.replace(/^["']|["']$/g, '').replace(/\\n/g, "\n").replace(/\r\n/g, "\n").trim();
   }
-
-  // Validate that it's a proper PEM key
   if (!privateKey || !privateKey.includes('-----BEGIN PRIVATE KEY-----')) {
     throw new Error('Invalid private key format');
   }

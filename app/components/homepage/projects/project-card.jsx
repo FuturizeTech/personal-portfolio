@@ -21,31 +21,31 @@ function ProjectCard({ project }) {
     <div className="glow-container glow-card from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full hover:shadow-2xl hover:shadow-pink-500/20 transition-all duration-300 transform hover:-translate-y-1">
       {images && images.length > 0 && (
         <div className="relative overflow-hidden rounded-t-lg">
-          <img 
-            src={images[currentImageIndex].src} 
-            alt={images[currentImageIndex].alt} 
+          <img
+            src={images[currentImageIndex].src}
+            alt={images[currentImageIndex].alt}
             className="w-full h-48 object-cover transition-opacity duration-300"
           />
           {images.length > 1 && (
             <>
-              <button 
-                onClick={(e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length); }} 
+              <button
+                onClick={(e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length); }}
                 className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 rounded-full hover:bg-opacity-75 transition-opacity"
               >
                 ‹
               </button>
-              <button 
-                onClick={(e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev + 1) % images.length); }} 
+              <button
+                onClick={(e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev + 1) % images.length); }}
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 rounded-full hover:bg-opacity-75 transition-opacity"
               >
                 ›
               </button>
               <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
                 {images.map((_, i) => (
-                  <button 
-                    key={i} 
-                    onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(i); }} 
-                    className={`w-2 h-2 rounded-full transition-colors ${i === currentImageIndex ? 'bg-white' : 'bg-gray-400'}`} 
+                  <button
+                    key={i}
+                    onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(i); }}
+                    className={`w-2 h-2 rounded-full transition-colors ${i === currentImageIndex ? 'bg-white' : 'bg-gray-400'}`}
                   />
                 ))}
               </div>
@@ -126,19 +126,19 @@ function ProjectCard({ project }) {
             <span>{translations.projects.viewCode}</span>
           </a>
         )}
-        <a
-          href={project.demo || '#'}
-          target={project.demo ? "_blank" : "_self"}
-          rel={project.demo ? "noopener noreferrer" : ""}
-          className={`inline-flex items-center font-semibold py-2 px-6 rounded-lg transition-all duration-300 hover:shadow-lg ${project.demo ? 'bg-gradient-to-r from-pink-500 to-violet-600 text-white hover:from-pink-600 hover:to-violet-700 hover:shadow-pink-500/50' : 'bg-gradient-to-r from-gray-500 to-gray-600 text-gray-300 cursor-not-allowed'}`}
-        >
-          <span>{project.demo ? translations.projects.viewLiveDemo : translations.projects.demoNotAvailable}</span>
-          {project.demo && (
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center bg-gradient-to-r from-pink-500 to-violet-600 text-white font-semibold py-2 px-6 rounded-lg hover:from-pink-600 hover:to-violet-700 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/50"
+          >
+            <span>{translations.projects.viewLiveDemo}</span>
             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
-          )}
-        </a>
+          </a>
+        )}
       </div>
     </div>
   );

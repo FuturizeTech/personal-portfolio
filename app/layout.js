@@ -1,14 +1,11 @@
+
 import { GoogleTagManager } from "@next/third-parties/google";
 
 import '@fontsource/inter/index.css';
 
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Footer from "./components/footer";
-import ScrollToTop from "./components/helper/scroll-to-top";
-import Navbar from "./components/navbar";
 import "./css/card.scss";
 import "./css/globals.scss";
+import ClientLayout from "./components/ClientLayout";
 
 export const metadata = {
   title: "Portfolio of Sarabjeet Singh- Software Developer",
@@ -23,25 +20,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="font-sans">
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-          style={{ zIndex: 10000 }}
-        />
-        <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
-          <Navbar />
+        <ClientLayout>
           {children}
-          <ScrollToTop />
-        </main>
-        <Footer />
+        </ClientLayout>
       </body>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
     </html>

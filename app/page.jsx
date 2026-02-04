@@ -13,27 +13,20 @@ const Education = dynamic(() => import("./components/homepage/education"), { ssr
 const ContactSection = dynamic(() => import("./components/homepage/contact"), { ssr: false });
 const AboutSection = dynamic(() => import("./components/homepage/about"), { ssr: false });
 
-async function getData() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`);
-  if (!res.ok) throw new Error("Failed to fetch data");
-  const data = await res.json();
-  return data.filter(d => d?.cover_image).sort(() => Math.random() - 0.5);
-}
-
 export default function Home() {
-  return (
-    <main className="pt-24">
-      <div suppressHydrationWarning>
-        <TagCloudComponent />
-        <HeroSection />
-        <AboutSection />
-        <Experience />
-        <Skills />
-        <Projects />
-        <ProjectsForSale />
-        <Education />
-        <ContactSection />
-      </div>
-    </main>
-  );
+    return (
+        <main className="pt-24">
+            <div suppressHydrationWarning>
+                <TagCloudComponent />
+                <HeroSection />
+                <AboutSection />
+                <Experience />
+                <Skills />
+                <Projects />
+                {/* <ProjectsForSale /> */}
+                <Education />
+                <ContactSection />
+            </div>
+        </main>
+    );
 }

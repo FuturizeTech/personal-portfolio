@@ -1,10 +1,13 @@
 'use client';
-
+import { useEffect } from 'react';
 import SaleProjectCard from './sale-project-card';
 import { saleProjects } from '@/utils/data/sale-projects';
 import { translations } from '@/utils/translations';
 
-const ProjectsForSale = () => {
+const ProjectsForSale = ({ onLoad }) => {
+  useEffect(() => {
+    if (onLoad) onLoad();
+  }, [onLoad]);
   return (
     <div id="projects-for-sale" className="relative z-50 my-12 lg:my-24">
 

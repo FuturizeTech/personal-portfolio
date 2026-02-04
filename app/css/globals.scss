@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .section-title { @apply text-xl md:text-2xl font-medium; }
+}
+
 :root {
   --foreground-rgb: rgb(211, 216, 232);
-}
+} 
 
 @media (prefers-color-scheme: dark) {
   :root {

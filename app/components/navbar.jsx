@@ -23,7 +23,7 @@ function Navbar() {
     { id: 'skills', label: translations.navbar.skills },
     { id: 'education', label: translations.navbar.education },
     { id: 'projects', label: translations.navbar.projects },
-    { id: 'projects-for-sale', label: translations.navbar.projectsForSale },
+    // { id: 'projects-for-sale', label: translations.navbar.projectsForSale },
     { id: 'contact', label: translations.navbar.contact },
   ];
 

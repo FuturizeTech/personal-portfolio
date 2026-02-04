@@ -41,6 +41,7 @@ function ContactForm() {
     try {
       setIsLoading(true);
       const response = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, userInput);
+      console.log("response: ", response);
       toast.success(response.data.message || "Message sent successfully!");
       setUserInput({ name: "", email: "", message: "" });
     } catch (error) {
@@ -90,7 +91,7 @@ function ContactForm() {
                 onChange={(e) => setUserInput({ ...userInput, name: e.target.value })}
                 onBlur={checkRequired}
                 className="bg-[#10172d] w-full border border-[#353a52] rounded-xl px-2 py-2 text-white focus:border-[#16f2b3] focus:ring-1 focus:ring-[#16f2b3] transition-all duration-300 placeholder:text-gray-400"
-                placeholder={translations.contact.placeholders.name}   
+                placeholder={translations.contact.placeholders.name}
               />
             </div>
 

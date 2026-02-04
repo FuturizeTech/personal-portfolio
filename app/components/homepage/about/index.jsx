@@ -3,8 +3,12 @@
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import { translations } from "@/utils/translations";
+import { useEffect } from "react";
 
-function AboutSection() {
+function AboutSection({ onLoad }) {
+  useEffect(() => {
+    if (onLoad) onLoad();
+  }, [onLoad]);
   return (
     <div id="about" className="my-1 mb-3 relative">
       {/* SIDE LABEL */}
@@ -18,7 +22,7 @@ function AboutSection() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         {/* TEXT */}
         <div className="order-2 lg:order-1">
-          <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
+          <p className="font-bold mb-5 text-[#16f2b3] text-xl uppercase">
             {translations.about.question}
           </p>
           <p className="text-gray-200 text-sm lg:text-lg">
