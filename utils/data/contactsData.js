@@ -1,5 +1,5 @@
 export const contactsData = {
-    email: 'sjalalpuria001@gmail.com',
+    email: 'hello@buildwithsarab.me',
     phone: '+91 7307472724',
     address: 'SAS Nagar, Mohali',
     github: 'https://github.com/FuturizeTech',

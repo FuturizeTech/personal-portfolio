@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="font-sans">
         <ClientLayout>
-          {children}
+          {children}c
         </ClientLayout>
       </body>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
