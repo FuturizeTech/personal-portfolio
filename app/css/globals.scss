@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-  .section-title { @apply text-xl md:text-2xl font-medium; }
+  .section-title {
+    @apply text-xl md:text-2xl font-medium;
+  }
 }
 
 :root {
   --foreground-rgb: rgb(211, 216, 232);
-} 
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -16,7 +18,87 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+html[style*="overflow: hidden"] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #0d1224;
+  position: relative;
+  background-attachment: fixed;
+}
+
+/* Smooth transitions and animations */
+* {
+  @apply transition-colors;
+}
+
+/* Section spacing */
+section {
+  @apply relative z-10;
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Improve touch targets for mobile */
+@media (max-width: 768px) {
+
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Prevent hero section background animation causing layout shift */
+[class*="hero"] img {
+  will-change: opacity;
+  contain: layout style paint;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Loading state animations */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

@@ -2,6 +2,11 @@ export function calculateTotalExperience(experiences) {
   let totalMonths = 0;
 
   experiences.forEach(exp => {
+    // Skip training period (id: 3)
+    if (exp.id === 3) {
+      return;
+    }
+
     const duration = exp.duration.replace(/[()]/g, ''); // Remove parentheses
     const parts = duration.split(' - ');
 

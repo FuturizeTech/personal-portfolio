@@ -19,26 +19,26 @@ function HeroSection({ onLoad }) {
 
   return (
 
-    <section className="relative flex flex-col items-center justify-between py-2 lg:py-2 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-between py-4 md:py-6 lg:py-2 overflow-hidden">
       <Image
         src="/hero.svg"
         alt="Hero"
         width={1572}
         height={795}
-        className="absolute -top-[98px] -z-10 opacity-80 animate-pulse"
+        className="absolute -top-[98px] -z-10 opacity-80"
       />
 
       {/* Gradient ring glow effect */}
       <div className="absolute w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl top-20 right-10"></div>
       <div className="absolute w-[300px] h-[300px] bg-violet-600/10 rounded-full blur-3xl bottom-0 left-10"></div>
 
-      <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8 relative z-10">
+      <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-6 md:gap-y-8 relative z-10">
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10"
+          className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-10 md:pb-10 lg:pt-10"
         >
           <h1 className="text-3xl font-black leading-10 text-white md:font-black lg:text-[2.4rem] lg:leading-[3.2rem]">
             {translations.hero.greeting}

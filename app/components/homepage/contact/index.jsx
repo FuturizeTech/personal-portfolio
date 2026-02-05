@@ -47,7 +47,7 @@ function ContactSection() {
   ];
 
   return (
-    <div id="contact" className="relative mt-24 text-white overflow-hidden">
+    <div id="contact" className="relative my-12 md:my-16 lg:my-20 text-white overflow-hidden">
       {/* Section title for desktop */}
       <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8 z-10">
         <span className="bg-[#1a1443] text-white rotate-90 p-2 px-5 text-xl rounded-md">

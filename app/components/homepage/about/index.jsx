@@ -10,7 +10,7 @@ function AboutSection({ onLoad }) {
     if (onLoad) onLoad();
   }, [onLoad]);
   return (
-    <div id="about" className="my-1 mb-3 relative">
+    <div id="about" className="my-12 md:my-16 lg:my-20 relative">
       {/* SIDE LABEL */}
       <div className="hidden lg:flex flex-col items-center absolute top-8 -right-8">
         <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">

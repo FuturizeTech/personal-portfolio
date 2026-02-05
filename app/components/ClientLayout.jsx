@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./footer";
 import ScrollToTop from "./helper/scroll-to-top";
 import Navbar from "./navbar";
+import FloatingRocket from "./helper/floating-rocket";
 
 import Loader from './loader';
 
@@ -23,7 +24,7 @@ export default function ClientLayout({ children }) {
 
   if (loading) {
     return (
-      <div className="font-sans bg-gray-900 f text-white">
+      <div className="font-sans bg-gray-900 text-white">
         <Loader />
       </div>
     );
@@ -44,7 +45,8 @@ export default function ClientLayout({ children }) {
         theme="dark"
         style={{ zIndex: 10000 }}
       />
-      <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white bg-gray-900">
+      <FloatingRocket />
+      <main className="min-h-screen relative mx-auto px-4 sm:px-6 md:px-8 lg:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white bg-gray-900">
         <Navbar />
         {children}
         <ScrollToTop />
