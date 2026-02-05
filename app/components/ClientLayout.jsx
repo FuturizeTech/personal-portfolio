@@ -49,8 +49,8 @@ export default function ClientLayout({ children }) {
       <main className="min-h-screen relative mx-auto px-4 sm:px-6 md:px-8 lg:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white bg-gray-900">
         <Navbar />
         {children}
-        <ScrollToTop />
       </main>
+      <ScrollToTop />
       <Footer />
     </ThemeProvider>
   );

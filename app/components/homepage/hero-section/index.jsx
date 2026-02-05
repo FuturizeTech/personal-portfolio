@@ -35,12 +35,12 @@ function HeroSection({ onLoad }) {
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-6 md:gap-y-8 relative z-10">
         {/* LEFT CONTENT */}
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
           className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-10 md:pb-10 lg:pt-10"
         >
-          <h1 className="text-3xl font-black leading-10 text-white md:font-black lg:text-[2.4rem] lg:leading-[3.2rem]">
+          <h1 className="text-3xl font-black leading-10 text-white md:font-black lg:text-[2.4rem] lg:leading-[3.2rem] min-h-[6rem] md:min-h-[7rem] lg:min-h-[8rem]" style={{ contain: 'layout style paint' }}>
             {translations.hero.greeting}
             <br />
             {translations.hero.introduction}{' '}
@@ -48,7 +48,7 @@ function HeroSection({ onLoad }) {
               {personalData.name}
             </span>
             <br />
-            <span className="text-[#16f2b3] font-semibold">
+            <span className="text-[#16f2b3] font-semibold block w-full min-h-[1.8em] md:min-h-[2em] lg:min-h-[2.2em]">
               <Typewriter
                 options={{
                   strings: translations.hero.roles,
@@ -106,8 +106,8 @@ function HeroSection({ onLoad }) {
 
         {/* RIGHT CODE BLOCK CARD */}
         <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
           className="order-1 lg:order-2 relative rounded-lg border border-[#1b2c68a0] bg-gradient-to-r from-[#0d1224] to-[#0a0d37] shadow-xl hover:shadow-pink-500/20 transition-all duration-300"
         >

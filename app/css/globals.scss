@@ -21,10 +21,9 @@
 html {
   scroll-behavior: smooth;
   overflow-y: scroll;
-}
-
-html {
-  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html[style*="overflow: hidden"] {
@@ -41,6 +40,12 @@ body {
   background-color: #0d1224;
   position: relative;
   background-attachment: fixed;
+  will-change: scroll-position;
+}
+
+main {
+  will-change: auto;
+  contain: layout style paint;
 }
 
 /* Smooth transitions and animations */
