@@ -103,7 +103,7 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Code content */}
-      <div className="flex-1 overflow-hidden border-t border-indigo-900/50 px-4 sm:px-5 lg:px-6 py-4 lg:py-6 bg-gradient-to-b from-transparent to-violet-900/5">
+      <div className="flex-1 overflow-auto border-t border-indigo-900/50 px-4 sm:px-5 lg:px-6 py-4 lg:py-6 bg-gradient-to-b from-transparent to-violet-900/5">
         <code className="font-mono text-xs sm:text-sm lg:text-base leading-relaxed">
           <div className="blink">
             <span className="mr-2 text-pink-500">const</span>
@@ -120,7 +120,12 @@ function ProjectCard({ project }) {
           <div className="ml-3 sm:ml-4 lg:ml-6">
             <span className="text-white">tools:</span>
             <span className="text-gray-400">{` [`}</span>
-            <span className="text-cyan-400">...</span>
+            {project.tools && project.tools.map((tool, i) => (
+              <span key={i}>
+                <span className="text-cyan-400">{`"${tool}"`}</span>
+                {i < project.tools.length - 1 && <span className="text-gray-400">{', '}</span>}
+              </span>
+            ))}
             <span className="text-gray-400">{`],`}</span>
           </div>
           <div className="ml-3 sm:ml-4 lg:ml-6">
@@ -129,10 +134,8 @@ function ProjectCard({ project }) {
             <span className="text-gray-400">,</span>
           </div>
           <div className="ml-3 sm:ml-4 lg:ml-6">
-            <span className="text-white whitespace-nowrap overflow-hidden text-ellipsis inline-block max-w-full">
-              desc:
-            </span>
-            <span className="text-cyan-400">{` "..."`}</span>
+            <span className="text-white">description:</span>
+            <span className="text-cyan-400">{` "${project.description.substring(0, 60)}..."`}</span>
             <span className="text-gray-400">,</span>
           </div>
           <div><span className="text-gray-400">{`}`}</span></div>
