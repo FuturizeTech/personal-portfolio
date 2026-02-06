@@ -15,8 +15,8 @@ const AboutSection = dynamic(() => import("./components/homepage/about"), { ssr:
 
 export default function Home() {
     return (
-        <main className="pt-24 pb-12 md:pb-16 lg:pb-20">
-            <div suppressHydrationWarning>
+        <>
+            <div suppressHydrationWarning className="pt-24 pb-12 md:pb-16 lg:pb-20">
                 <TagCloudComponent />
                 <HeroSection />
                 <AboutSection />
@@ -27,6 +27,6 @@ export default function Home() {
                 <Education />
                 <ContactSection />
             </div>
-        </main>
+        </>
     );
 }

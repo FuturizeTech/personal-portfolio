@@ -64,7 +64,7 @@ function Navbar() {
     <nav className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300
       ${scrolled ? 'bg-gradient-to-r from-black via-gray-900 to-black bg-opacity-90 backdrop-blur-xl shadow-xl shadow-pink-500/10' : 'bg-gradient-to-r from-black/50 via-gray-900/40 to-black/50 backdrop-blur-lg'}`}>
       
-      <div className="relative z-20 flex items-center justify-between px-4 sm:px-6 lg:px-10 py-3 md:py-4 lg:py-4 max-w-[92rem] mx-auto w-full">
+      <div className="relative z-20 flex items-center justify-between px-4 sm:px-6 lg:px-10 py-3 md:py-4 lg:py-4 w-full">
         {/* Logo with enhanced animations */}
         <Link href="/" className="flex items-center flex-shrink-0 group">
           <div className="relative w-10 h-10 sm:w-12 sm:h-12 hover:scale-110 transition-all duration-300 group-hover:drop-shadow-lg group-hover:drop-shadow-pink-500/50">
@@ -103,7 +103,7 @@ function Navbar() {
         <>
           {/* Backdrop - Click to close */}
           <div 
-            className="md:hidden fixed inset-0 top-0 bg-black/40 backdrop-blur-sm z-30"
+            className="md:hidden fixed inset-0 top-16 bg-black/40 backdrop-blur-sm z-30"
             onClick={() => setIsMobileMenuOpen(false)}
           />
           

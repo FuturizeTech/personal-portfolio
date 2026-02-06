@@ -27,14 +27,12 @@ const Projects = () => {
 
   return (
     <div id='projects' className="relative z-50 my-12 md:my-16 lg:my-20">
-      <div className="sticky top-20 z-40 bg-gradient-to-b from-gray-900 via-gray-900 to-transparent pb-4">
-        <div className="w-[80px] h-[80px] bg-violet-100 rounded-full absolute -top-3 left-0 translate-x-1/2 filter blur-3xl opacity-30"></div>
-        <div className="flex items-center justify-start relative overflow-hidden">
-          <span className="bg-gradient-to-r from-pink-600 to-violet-600 text-white px-4 sm:px-5 py-2 sm:py-3 text-lg sm:text-xl font-bold rounded-md flex-shrink-0">
-            {translations.projects.title}
-          </span>
-          <span className="w-full h-[2px] ml-4 bg-gradient-to-r from-pink-500 via-violet-500 to-transparent"></span>
-        </div>
+      <div className="w-[80px] h-[80px] bg-violet-100 rounded-full absolute -top-3 left-0 translate-x-1/2 filter blur-3xl opacity-30"></div>
+      <div className="flex items-center justify-start relative overflow-hidden pb-4">
+        <span className="bg-gradient-to-r from-pink-600 to-violet-600 text-white px-4 sm:px-5 py-2 sm:py-3 text-lg sm:text-xl font-bold rounded-md flex-shrink-0">
+          {translations.projects.title}
+        </span>
+        <span className="w-full h-[2px] ml-4 bg-gradient-to-r from-pink-500 via-violet-500 to-transparent"></span>
       </div>
 
       <div className="pt-12 lg:pt-16">

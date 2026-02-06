@@ -32,46 +32,45 @@ function ProjectCard({ project }) {
             onLoad={() => setIsImageLoading(false)}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
-          
+
           {/* Overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d1224] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
-          
+
           {/* Image Navigation */}
           {images.length > 1 && (
             <>
               <button
-                onClick={(e) => { 
-                  e.stopPropagation(); 
-                  setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length); 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
                 }}
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-pink-600 text-white p-2 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 backdrop-blur-sm"
               >
                 ‹
               </button>
               <button
-                onClick={(e) => { 
-                  e.stopPropagation(); 
-                  setCurrentImageIndex((prev) => (prev + 1) % images.length); 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentImageIndex((prev) => (prev + 1) % images.length);
                 }}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-pink-600 text-white p-2 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 backdrop-blur-sm"
               >
                 ›
               </button>
-              
+
               {/* Indicator dots */}
               <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
                 {images.map((_, i) => (
                   <button
                     key={i}
-                    onClick={(e) => { 
-                      e.stopPropagation(); 
-                      setCurrentImageIndex(i); 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(i);
                     }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      i === currentImageIndex 
-                        ? 'bg-pink-500 w-6' 
-                        : 'bg-gray-400 hover:bg-gray-300'
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentImageIndex
+                      ? 'bg-pink-500 w-6'
+                      : 'bg-gray-400 hover:bg-gray-300'
+                      }`}
                   />
                 ))}
               </div>
@@ -79,7 +78,7 @@ function ProjectCard({ project }) {
           )}
         </div>
       )}
-      
+
       {/* Border divider */}
       <div className="flex flex-row">
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
@@ -166,7 +165,7 @@ function ProjectCard({ project }) {
             className="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-gradient-to-r from-pink-600 to-violet-600 text-white font-semibold text-xs sm:text-sm py-2 px-3 rounded-lg hover:from-pink-700 hover:to-violet-700 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/50 transform hover:scale-105"
           >
             <span className="hidden sm:inline">{translations.projects.viewLiveDemo}</span>
-            <span className="sm:hidden">Demo</span>
+            <span className="sm:hidden">{translations.projects.viewDemo}</span>
             <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
