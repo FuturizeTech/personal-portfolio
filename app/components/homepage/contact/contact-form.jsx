@@ -40,8 +40,9 @@ function ContactForm() {
 
     try {
       setIsLoading(true);
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, userInput);
-      console.log("response: ", response);
+      // const response = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, userInput);
+      const response = await axios.post('/api/contact', userInput);
+      console.log("response is :", response);
       toast.success(response.data.message || "Message sent successfully!");
       setUserInput({ name: "", email: "", message: "" });
     } catch (error) {

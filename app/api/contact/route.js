@@ -2,6 +2,29 @@ export const runtime = 'nodejs';
 
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+
+const getAllowedOrigins = () => {
+  return [
+    'https://www.buildwithsarab.me',
+    'https://buildwithsarab.me',
+    process.env.NEXT_PUBLIC_APP_URL,
+    'http://localhost:3000',
+    'http://localhost:3001',
+  ].filter(Boolean);
+};
+
+const getCorsHeaders = (origin) => {
+  const allowedOrigins = getAllowedOrigins();
+  const isOriginAllowed = allowedOrigins.includes(origin);
+  
+  return {
+    'Access-Control-Allow-Origin': isOriginAllowed ? origin : allowedOrigins[0],
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Access-Control-Max-Age': '86400',
+  };
+};
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
@@ -27,7 +50,7 @@ const generateEmailTemplate = (name, email, userMessage) => `
     </div>
   </div>
 `;
-
+// console.log('Email transporter configured:', !!transporter);
 // Helper function to send an email via Nodemailer
 async function sendEmail(payload, message) {
   const { name, email, message: userMessage } = payload;
@@ -50,11 +73,24 @@ async function sendEmail(payload, message) {
   }
 };
 
+export async function OPTIONS(request) {
+  const origin = request.headers.get('origin') || '';
+  const corsHeaders = getCorsHeaders(origin);
+  
+  return new NextResponse(null, {
+    status: 200,
+    headers: corsHeaders,
+  });
+}
+
 export async function POST(request) {
+  const origin = request.headers.get('origin') || '';
+  const corsHeaders = getCorsHeaders(origin);
+  
   try {
     const payload = await request.json();
     const { name, email, message: userMessage } = payload;
-
+    // console.log("payload is:", payload);
     const message = `New message from ${name}\n\nEmail: ${email}\n\nMessage:\n\n${userMessage}\n\n`;
 
     // Send email (optional)
@@ -92,18 +128,27 @@ export async function POST(request) {
         message: successMessage,
         firebaseStored: firebaseSuccess,
         emailSent: emailSuccess
-      }, { status: 200 });
+      }, { 
+        status: 200,
+        headers: corsHeaders,
+      });
     }
 
     return NextResponse.json({
       success: false,
       message: 'Failed to store message.',
-    }, { status: 500 });
+    }, { 
+      status: 500,
+      headers: corsHeaders,
+    });
   } catch (error) {
     console.error('API Error:', error.message);
     return NextResponse.json({
       success: false,
       message: 'Server error occurred.',
-    }, { status: 500 });
+    }, { 
+      status: 500,
+      headers: corsHeaders,
+    });
   }
 };

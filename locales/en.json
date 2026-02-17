@@ -53,7 +53,7 @@
         "sendMessage": "Send Message",
         "placeholders": {
             "name": "Sarabjeet Singh",
-            "email": "youremail@email.com",
+            "email": "youremail@gmail.com",
             "message": "Write your message..."
         }
     },

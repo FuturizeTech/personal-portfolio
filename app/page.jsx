@@ -1,8 +1,5 @@
 'use client';
 import dynamic from "next/dynamic";
-import { personalData } from "@/utils/data/personal-data";
-import { useEffect, useState } from "react";
-import ProjectsForSale from "./components/projectsforsale";
 
 const TagCloudComponent = dynamic(() => import("./components/TagCloudComponent"), { ssr: false });
 const HeroSection = dynamic(() => import("./components/homepage/hero-section"), { ssr: false });
