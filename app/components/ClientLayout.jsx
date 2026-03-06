@@ -10,14 +10,13 @@ import Navbar from "./navbar";
 import FloatingRocket from "./helper/floating-rocket";
 import Loader from './loader';
 export default function ClientLayout({ children }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Optimized: Disabled loader for instant first paint
   
-  // Optimize: Reduced from 5 seconds to 1 second for faster first paint
-  // Also use requestIdleCallback for non-blocking initialization
   useEffect(() => {
+    // Optimized: Minimal check, just ensure client-side hydration is complete
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 100);
     return () => clearTimeout(timer);
   }, []);
 

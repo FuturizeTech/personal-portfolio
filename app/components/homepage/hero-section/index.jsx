@@ -10,16 +10,19 @@ import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import TiltCard from "@/app/components/helper/TiltCard";
 import { translations } from "@/utils/translations";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function HeroSection({ onLoad }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
   useEffect(() => {
     if (onLoad) onLoad();
+    setIsLoaded(true);
   }, [onLoad]);
 
   return (
 
-    <section className="relative flex flex-col items-center justify-between py-4 md:py-6 lg:py-2 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-between py-4 md:py-6 lg:py-2 overflow-hidden" style={{minHeight: '600px'}}>
       {/* Optimize: Use Next.js Image with priority for faster LCP */}
       <Image
         src="/hero.svg"
@@ -33,8 +36,8 @@ function HeroSection({ onLoad }) {
       />
 
       {/* Gradient ring glow effect */}
-      <div className="absolute w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl top-20 right-10"></div>
-      <div className="absolute w-[300px] h-[300px] bg-violet-600/10 rounded-full blur-3xl bottom-0 left-10"></div>
+      <div className="absolute w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl top-20 right-10" style={{willChange: 'transform'}}></div>
+      <div className="absolute w-[300px] h-[300px] bg-violet-600/10 rounded-full blur-3xl bottom-0 left-10" style={{willChange: 'transform'}}></div>
 
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-6 md:gap-y-8 relative z-10">
         {/* LEFT CONTENT */}

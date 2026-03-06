@@ -51,7 +51,6 @@ function AboutSection({ onLoad }) {
               width={200}
               height={200}
               alt="Sarabjeet Singh"
-              unoptimized
               className="relative z-10 rounded-3xl transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
             />
 
