@@ -1,25 +1,44 @@
 // @flow strict
 
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { translations } from '@/utils/translations';
 
 function ProjectCard({ project }) {
   const images = project.images || [project.image];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
+
+  // Optimize: Use Intersection Observer to pause animation when not visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    if (images && images.length > 1) {
+    // Optimize: Only run interval when visible
+    if (images && images.length > 1 && isVisible) {
       const interval = setInterval(() => {
         setCurrentImageIndex((prev) => (prev + 1) % images.length);
       }, 4000);
       return () => clearInterval(interval);
     }
-  }, [images]);
+  }, [images, isVisible]);
 
   return (
-    <div className="group h-full flex flex-col glow-container glow-card from-[#0d1224] border-[#1b2c68a0] relative rounded-xl border bg-gradient-to-br to-[#0a0d37] hover:shadow-2xl hover:shadow-pink-500/30 transition-all duration-500 hover:border-pink-500/50 transform hover:-translate-y-2">
+    <div ref={cardRef} className="group h-full flex flex-col glow-container glow-card from-[#0d1224] border-[#1b2c68a0] relative rounded-xl border bg-gradient-to-br to-[#0a0d37] hover:shadow-2xl hover:shadow-pink-500/30 transition-all duration-500 hover:border-pink-500/50 transform hover:-translate-y-2">
       {/* Image Container */}
       {images && images.length > 0 && (
         <div className="relative overflow-hidden rounded-t-xl bg-gray-800 aspect-video">

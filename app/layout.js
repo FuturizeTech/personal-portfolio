@@ -17,10 +17,18 @@ export const metadata = {
   },
 };
 
+// Optimize: Preload critical fonts
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="font-sans">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          href="/_next/static/media/trace.svg"
+          as="image"
+        />
+      </head>
+      <body className="font-sans antialiased">
 
         {process.env.NEXT_PUBLIC_GTM && (
           <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />

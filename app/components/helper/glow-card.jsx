@@ -1,9 +1,11 @@
 // app/components/GlowCard.jsx
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 const GlowCard = ({ children, identifier, className = "" }) => {
+  const timeoutRef = useRef(null);
+  
   useEffect(() => {
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
     const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
@@ -17,7 +19,19 @@ const GlowCard = ({ children, identifier, className = "" }) => {
       opacity: 0,
     };
 
-    const UPDATE = (event) => {
+    // Optimize: Throttle function to limit how often the handler runs
+    const throttle = (func, limit) => {
+      let inThrottle;
+      return function(...args) {
+        if (!inThrottle) {
+          func.apply(this, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      }
+    }
+
+    const UPDATE = throttle((event) => {
       for (const CARD of CARDS) {
         const CARD_BOUNDS = CARD.getBoundingClientRect();
 
@@ -46,9 +60,10 @@ const GlowCard = ({ children, identifier, className = "" }) => {
 
         CARD.style.setProperty('--start', ANGLE + 90);
       }
-    };
+    }, 50); // Limit to once every 50ms
 
-    document.body.addEventListener('pointermove', UPDATE);
+    // Optimize: Use passive event listener for better scroll performance
+    document.body.addEventListener('pointermove', UPDATE, { passive: true });
 
     const RESTYLE = () => {
       CONTAINER?.style.setProperty('--gap', CONFIG.gap);
@@ -61,10 +76,11 @@ const GlowCard = ({ children, identifier, className = "" }) => {
     };
 
     RESTYLE();
-    UPDATE();
+    UPDATE({ x: 0, y: 0 }); // Initialize with default values
 
     return () => {
       document.body.removeEventListener('pointermove', UPDATE);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [identifier]);
 

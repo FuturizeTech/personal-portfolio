@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { FaArrowUp } from "react-icons/fa6";
 
 const DEFAULT_BTN_CLS =
@@ -8,23 +8,33 @@ const DEFAULT_BTN_CLS =
 const SCROLL_THRESHOLD = 50;
 
 const ScrollToTop = () => {
-  const [btnCls, setBtnCls] = useState(DEFAULT_BTN_CLS);
+  const [isVisible, setIsVisible] = useState(false);
 
+  // Optimize: Use requestAnimationFrame for smoother scroll handling
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (window.scrollY > SCROLL_THRESHOLD) {
-        setBtnCls(DEFAULT_BTN_CLS.replace(" hidden", ""));
-      } else {
-        setBtnCls(DEFAULT_BTN_CLS + " hidden");
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsVisible(window.scrollY > SCROLL_THRESHOLD);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", handleScroll, { passive: true });
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const onClickBtn = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const onClickBtn = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const btnCls = isVisible ? DEFAULT_BTN_CLS : DEFAULT_BTN_CLS + " hidden";
 
   return (
     <button className={btnCls} onClick={onClickBtn}>

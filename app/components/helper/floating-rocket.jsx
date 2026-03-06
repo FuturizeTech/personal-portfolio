@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const FloatingRocket = () => {
   const [positions, setPositions] = useState([]);
@@ -10,11 +10,12 @@ const FloatingRocket = () => {
   useEffect(() => {
     // Generate random positions for rocket to fly to
     const generatePositions = () => {
+      if (typeof window === 'undefined') return;
       const newPositions = [];
       for (let i = 0; i < 10; i++) {
         newPositions.push({
-          x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 0),
-          y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 0),
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
           rotate: Math.random() * 360,
         });
       }
@@ -23,14 +24,16 @@ const FloatingRocket = () => {
 
     generatePositions();
 
-    // Change to next position every 8 seconds
+    // Optimize: Reduced from 8 seconds to 12 seconds to reduce state updates
+    // Only update position when needed
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % 10);
-    }, 8000);
+    }, 12000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Optimize: Return null early if no positions to prevent unnecessary renders
   if (positions.length === 0) return null;
 
   const currentPos = positions[currentIndex];
@@ -43,14 +46,15 @@ const FloatingRocket = () => {
         top: '50%',
         transform: 'translate(-50%, -50%)',
         zIndex: 0,
+        willChange: 'transform',
       }}
       animate={{
         x: currentPos ? currentPos.x - (typeof window !== 'undefined' ? window.innerWidth / 2 : 0) : 0,
         y: currentPos ? currentPos.y - (typeof window !== 'undefined' ? window.innerHeight / 2 : 0) : 0,
       }}
       transition={{
-        duration: 8,
-        ease: 'easeInOut',
+        duration: 12, // Slower transition for smoother animation
+        ease: 'linear', // Linear easing for continuous movement
       }}
     >
       <motion.div
@@ -58,10 +62,10 @@ const FloatingRocket = () => {
           rotate: currentPos ? currentPos.rotate : 0,
         }}
         transition={{
-          duration: 8,
-          ease: 'easeInOut',
+          duration: 12,
+          ease: 'linear',
         }}
-        className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center"
+        className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"
       >
         {/* Rocket SVG */}
         <svg

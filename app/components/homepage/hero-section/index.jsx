@@ -20,12 +20,16 @@ function HeroSection({ onLoad }) {
   return (
 
     <section className="relative flex flex-col items-center justify-between py-4 md:py-6 lg:py-2 overflow-hidden">
+      {/* Optimize: Use Next.js Image with priority for faster LCP */}
       <Image
         src="/hero.svg"
-        alt="Hero"
+        alt="Hero background"
         width={1572}
         height={795}
+        priority={true}
+        loading="eager"
         className="absolute -top-[98px] -z-10 opacity-80"
+        style={{ contain: 'layout style paint' }}
       />
 
       {/* Gradient ring glow effect */}
