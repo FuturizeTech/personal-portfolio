@@ -13,7 +13,7 @@ export const metadata = {
   description:
     "This is the portfolio of Sarabjeet Singh. I am a full stack developer and a self taught developer...",
   icons: {
-    icon: "/trace.svg",
+    icon: "/dp.png",
   },
 };
 

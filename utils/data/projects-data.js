@@ -40,4 +40,21 @@ export const projectsData = [
     ],
 
   },
+  {
+    id: 4,
+    name: 'Shopbix Marketplace',
+    description:
+      'Shopbix blends classifieds and local search into a single marketplace platform, combining OLX-style product listings with Justdial-style business discovery. I implemented a polished commerce experience with Laravel/PHP backend integrations, Next.js frontend pages, Google Maps location search, Firebase utilities, AWS infrastructure, and third-party API-driven business listings and ecommerce workflows.',
+    tools: ['PHP', 'Laravel', 'Next.js', 'Google Maps', 'Firebase', 'AWS', '3rd Party APIs'],
+    role: 'Full Stack Developer',
+    code: '',
+    demo: 'https://shopbix.com/',
+    images: [
+      { src: '/project/shopbix1.png', alt: 'Shopbix homepage sample' },
+      { src: '/project/shopbix2.png', alt: 'Shopbix product browsing page' },
+      { src: '/project/shopbix3.png', alt: 'Shopbix category and search' },
+      { src: '/project/shopbix4.png', alt: 'Shopbix cart experience' },
+      { src: '/project/shopbix5.png', alt: 'Shopbix checkout flow' }
+    ],
+  },
 ];

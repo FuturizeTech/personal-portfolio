@@ -14,16 +14,14 @@ import { useEffect, useState } from "react";
 
 function HeroSection({ onLoad }) {
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   useEffect(() => {
     if (onLoad) onLoad();
     setIsLoaded(true);
   }, [onLoad]);
 
   return (
-
-    <section className="relative flex flex-col items-center justify-between py-4 md:py-6 lg:py-2 overflow-hidden" style={{minHeight: '600px'}}>
-      {/* Optimize: Use Next.js Image with priority for faster LCP */}
+    <section className="relative isolate overflow-hidden py-6 md:py-10 lg:py-12" style={{ minHeight: '680px' }}>
       <Image
         src="/hero.svg"
         alt="Hero background"
@@ -31,31 +29,30 @@ function HeroSection({ onLoad }) {
         height={795}
         priority={true}
         loading="eager"
-        className="absolute -top-[98px] -z-10 opacity-80"
+        className="absolute inset-x-0 top-0 -z-10 opacity-70"
         style={{ contain: 'layout style paint' }}
       />
 
-      {/* Gradient ring glow effect */}
-      <div className="absolute w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl top-20 right-10" style={{willChange: 'transform'}}></div>
-      <div className="absolute w-[300px] h-[300px] bg-violet-600/10 rounded-full blur-3xl bottom-0 left-10" style={{willChange: 'transform'}}></div>
-
-      <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-6 md:gap-y-8 relative z-10">
-        {/* LEFT CONTENT */}
+      <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-10 md:pb-10 lg:pt-10"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-start justify-center pb-6"
         >
-          <h1 className="text-3xl font-black leading-10 text-white md:font-black lg:text-[2.4rem] lg:leading-[3.2rem] min-h-[6rem] md:min-h-[7rem] lg:min-h-[8rem]" style={{ contain: 'layout style paint' }}>
-            {translations.hero.greeting}
-            <br />
+          <div className="section-heading mb-6">
+            <span className="h-2 w-2 rounded-full bg-pink-400" />
+            Available for impactful product work
+          </div>
+
+          <h1 className="max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl" style={{ contain: 'layout style paint' }}>
+            {translations.hero.greeting}{' '}
             {translations.hero.introduction}{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-600 font-black">
+            <span className="bg-gradient-to-r from-pink-500 via-fuchsia-400 to-cyan-300 bg-clip-text text-transparent">
               {personalData.name}
             </span>
             <br />
-            <span className="text-[#16f2b3] font-semibold block w-full min-h-[1.8em] md:min-h-[2em] lg:min-h-[2.2em]">
+            <span className="mt-3 block min-h-[1.8em] text-[1.1rem] font-semibold text-emerald-300 sm:text-[1.35rem] lg:min-h-[2.2em]">
               <Typewriter
                 options={{
                   strings: translations.hero.roles,
@@ -66,151 +63,77 @@ function HeroSection({ onLoad }) {
               />
             </span>
           </h1>
-          <p className="text-gray-300 mt-6 text-sm md:text-base max-w-lg">
+
+          <p className="mt-6 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
             {translations.hero.description}
           </p>
 
-          {/* Social Icons */}
-          <div className="my-10 flex items-center gap-5">
-            <Link
-              href={personalData.github}
-              target="_blank"
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
-            >
-              <BsGithub size={30} />
-            </Link>
-            <Link
-              href={personalData.linkedIn}
-              target="_blank"
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
-            >
-              <BsLinkedin size={30} />
-            </Link>
-          </div>
-
-          {/* Buttons */}
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="#contact"
-              className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600"
+              className="rounded-full border border-pink-400/30 bg-gradient-to-r from-pink-500 to-violet-600 px-5 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white shadow-[0_18px_45px_rgba(244,114,182,0.24)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(244,114,182,0.3)]"
             >
-              <button className="px-4 md:px-8 py-3 bg-[#0d1224] rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider text-white flex items-center gap-2 hover:gap-3">
-                <span>{translations.hero.workTogether}</span>
+              <span className="flex items-center gap-2">
                 <RiContactsFill size={16} />
-              </button>
+                {translations.hero.workTogether}
+              </span>
             </Link>
-
             <Link
-              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-4 md:px-8 py-3 text-xs md:text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105"
+              className="flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-5 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-slate-100 transition duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/10"
               target="_blank"
               href={personalData.resume}
             >
-              <span>{translations.hero.getResume}</span>
               <MdDownload size={16} />
+              {translations.hero.getResume}
+            </Link>
+          </div>
+
+          <div className="mt-8 flex items-center gap-5">
+            <Link href={personalData.github} target="_blank" className="rounded-full border border-white/10 bg-white/5 p-3 text-pink-300 transition duration-300 hover:scale-110 hover:border-pink-400/40 hover:text-pink-200">
+              <BsGithub size={22} />
+            </Link>
+            <Link href={personalData.linkedIn} target="_blank" className="rounded-full border border-white/10 bg-white/5 p-3 text-cyan-300 transition duration-300 hover:scale-110 hover:border-cyan-400/40 hover:text-cyan-200">
+              <BsLinkedin size={22} />
             </Link>
           </div>
         </motion.div>
 
-        {/* RIGHT CODE BLOCK CARD */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="order-1 lg:order-2 relative rounded-lg border border-[#1b2c68a0] bg-gradient-to-r from-[#0d1224] to-[#0a0d37] shadow-xl hover:shadow-pink-500/20 transition-all duration-300"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.15 }}
+          className="relative"
         >
-          <div className="flex flex-row">
-            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-            <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-          </div>
-
-          <TiltCard className="class-card-tilt order-1 lg:order-2 from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37]">
-            <div className="flex flex-row">
-              <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-              <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-            </div>
-            <div className="px-4 lg:px-8 py-5">
-              <div className="flex flex-row space-x-2">
-                <div className="h-3 w-3 rounded-full bg-red-400"></div>
-                <div className="h-3 w-3 rounded-full bg-orange-400"></div>
-                <div className="h-3 w-3 rounded-full bg-green-200"></div>
+          <div className="absolute inset-0 -translate-y-4 rounded-[2rem] bg-gradient-to-r from-pink-500/20 to-cyan-400/20 blur-3xl" />
+          <TiltCard className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/70 p-2 shadow-[0_30px_70px_rgba(2,6,23,0.5)] backdrop-blur-xl">
+            <div className="rounded-[1.5rem] border border-white/10 bg-slate-900/80 p-4 sm:p-6">
+              <div className="mb-4 flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs uppercase tracking-[0.24em] text-slate-400">
+                <span>Core stack</span>
+                <span className="text-emerald-300">• available now</span>
               </div>
-            </div>
-            <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
-              <code className="font-mono text-xs md:text-sm lg:text-base">
-                <div className="blink">
-                  <span className="mr-2 text-pink-500">const</span>
-                  <span className="mr-2 text-white">coder</span>
-                  <span className="mr-2 text-pink-500">=</span>
-                  <span className="text-gray-400">{'{'}</span>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                {['Laravel', 'Next.js', 'Node.js'].map((item) => (
+                  <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3 text-center text-sm font-semibold text-slate-200">
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4 overflow-hidden rounded-[1.25rem] border border-cyan-400/20 bg-[#040816] p-4 font-mono text-[0.75rem] leading-6 text-slate-200 sm:text-sm">
+                <div className="mb-3 flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
                 </div>
-                <div>
-                  <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
-                  <span className="text-gray-400">{`'`}</span>
-                  <span className="text-amber-300">Sarabjeet Singh</span>
-                  <span className="text-gray-400">{`',`}</span>
+                <div className="space-y-1">
+                  <div><span className="text-pink-400">const</span> <span className="text-white">builder</span> = {'{'}</div>
+                  <div className="pl-4"><span className="text-white">name:</span> <span className="text-amber-300">"Sarabjeet Singh"</span>,</div>
+                  <div className="pl-4"><span className="text-white">focus:</span> <span className="text-cyan-300">"full-stack product development"</span>,</div>
+                  <div className="pl-4"><span className="text-white">impact:</span> <span className="text-emerald-300">"fast, scalable, polished"</span></div>
+                  <div>{'};'}</div>
                 </div>
-                <div className="ml-4 lg:ml-8 mr-2">
-                  <span className=" text-white">skills:</span>
-                  <span className="text-gray-400">{`['`}</span>
-                  <span className="text-amber-300">Laravel</span>
-                  <span className="text-gray-400">{"', '"}</span>
-                  <span className="text-amber-300">Yii</span>
-                  <span className="text-gray-400">{"', '"}</span>
-                  <span className="text-amber-300">Next js</span>
-                  <span className="text-gray-400">{"', '"}</span>
-                  <span className="text-amber-300">Node Js</span>
-                  <span className="text-gray-400">{"', '"}</span>
-                  <span className="text-amber-300">MySql</span>
-                  <span className="text-gray-400">{"', '"}</span>
-                  <span className="text-amber-300">Supabase</span>
-                  <span className="text-gray-400">{"', '"}</span>
-                  <span className="text-amber-300">AWS</span>
-                  <span className="text-gray-400">{"'],"}</span>
-                </div>
-                <div>
-                  <span className="ml-4 lg:ml-8 mr-2 text-white">hardWorker:</span>
-                  <span className="text-orange-400">true</span>
-                  <span className="text-gray-400">,</span>
-                </div>
-                <div>
-                  <span className="ml-4 lg:ml-8 mr-2 text-white">quickLearner:</span>
-                  <span className="text-orange-400">true</span>
-                  <span className="text-gray-400">,</span>
-                </div>
-                <div>
-                  <span className="ml-4 lg:ml-8 mr-2 text-white">problemSolver:</span>
-                  <span className="text-orange-400">true</span>
-                  <span className="text-gray-400">,</span>
-                </div>
-                <div>
-                  <span className="ml-4 lg:ml-8 mr-2 text-green-400">hireable:</span>
-                  <span className="text-orange-400">function</span>
-                  <span className="text-gray-400">{'() {'}</span>
-                </div>
-                <div>
-                  <span className="ml-8 lg:ml-16 mr-2 text-orange-400">return</span>
-                  <span className="text-gray-400">{`(`}</span>
-                </div>
-                <div>
-                  <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                  <span className="mr-2 text-white">hardWorker</span>
-                  <span className="text-amber-300">&amp;&amp;</span>
-                </div>
-                <div>
-                  <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                  <span className="mr-2 text-white">problemSolver</span>
-                  <span className="text-amber-300">&amp;&amp;</span>
-                </div>
-                <div>
-                  <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                  <span className="mr-2 text-white">skills.length</span>
-                  <span className="mr-2 text-amber-300">&gt;=</span>
-                  <span className="text-orange-400">5</span>
-                </div>
-                <div><span className="ml-8 lg:ml-16 mr-2 text-gray-400">{`);`}</span></div>
-                <div><span className="ml-4 lg:ml-8 text-gray-400">{`};`}</span></div>
-                <div><span className="text-gray-400">{`};`}</span></div>
-              </code>
+              </div>
             </div>
           </TiltCard>
         </motion.div>

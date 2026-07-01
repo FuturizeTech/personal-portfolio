@@ -26,85 +26,58 @@ function Experience({ onLoad }) {
   }, [onLoad]);
 
   return (
-    <div id="experience" className="my-12 md:my-16 lg:my-20 relative">
-      {/* Background section image */}
-      <Image
-        src="/section.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
-      />
+    <section id="experience" className="relative my-10 py-4 md:my-16 lg:py-8">
+      <div className="absolute inset-0 -z-10 rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-900/60 via-slate-900/30 to-transparent" />
 
-
-      {/* Section title */}
-      <div className="flex justify-center my-6 md:my-8 lg:my-10 relative z-20">
-        <div className="flex items-center gap-3 sm:gap-4">
-          <span className="w-16 sm:w-24 h-[2px] bg-gradient-to-r from-transparent via-pink-500 to-transparent"></span>
-          <span className="bg-gradient-to-r from-pink-600 to-violet-600 w-fit text-white p-2 px-4 sm:px-5 text-base sm:text-xl font-bold rounded-md">
-            {translations.experience.title}
-          </span>
-          <span className="w-16 sm:w-24 h-[2px] bg-gradient-to-r from-transparent via-violet-500 to-transparent"></span>
-        </div>
+      <div className="flex justify-center px-4 py-4 md:py-6">
+        <div className="section-heading">{translations.experience.title}</div>
       </div>
 
-      {/* Total experience (centered under heading) */}
-      <div className="flex justify-center my-3 relative z-10 mt-2">
+      <div className="mx-auto mt-4 flex max-w-3xl justify-center px-4">
         <GlowCard identifier="total-experience">
-          <div className="p-3 text-center">
-            <p className="text-xs sm:text-sm text-[#16f2b3]">Total Experience</p>
-            <p className="text-base sm:text-lg font-bold text-white">
+          <div className="rounded-[1.4rem] border border-white/10 bg-slate-950/70 px-5 py-4 text-center shadow-[0_20px_60px_rgba(2,6,23,0.25)]">
+            <p className="text-xs uppercase tracking-[0.3em] text-emerald-300">Total Experience</p>
+            <p className="mt-2 text-lg font-semibold text-white sm:text-xl">
               {totalExperience.years} Years {totalExperience.months} Months
             </p>
           </div>
         </GlowCard>
       </div>
 
-      <div className="py-8 md:py-10 lg:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-start lg:items-center">
-          {/* Lottie animation */}
-          <div className="order-2 lg:order-1 flex justify-center items-center min-h-[250px] sm:min-h-[300px] lg:min-h-[400px]">
-            <div className="w-full h-full max-w-md">
+      <div className="mt-6 px-2 py-3 md:py-6 lg:px-0">
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="order-2 flex min-h-[260px] items-center justify-center lg:order-1 lg:min-h-[420px]">
+            <div className="w-full max-w-md rounded-[2rem] border border-white/10 bg-slate-900/60 p-4 shadow-[0_30px_70px_rgba(2,6,23,0.25)] backdrop-blur-xl">
               <AnimationLottie animationPath={experience} width="100%" />
             </div>
           </div>
 
-          {/* Experience cards */}
           <div className="order-1 lg:order-2">
-            <div className="flex flex-col gap-4 sm:gap-6">
+            <div className="flex flex-col gap-4 sm:gap-5">
               {experiences.map((exp, index) => (
                 <GlowCard key={exp.id} identifier={`experience-${exp.id}`}>
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
-                    className="relative p-3 sm:p-4 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-500 shadow-lg"
+                    transition={{ duration: 0.6, delay: index * 0.12 }}
+                    className="relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-slate-950/70 p-4 shadow-[0_20px_55px_rgba(2,6,23,0.2)] transition duration-500 hover:-translate-y-1 hover:border-pink-400/40 hover:shadow-[0_24px_65px_rgba(244,114,182,0.18)]"
                   >
-                    {/* Blur overlay for depth */}
-                    <Image
-                      src="/blur-23.svg"
-                      alt="Blur overlay"
-                      width={1080}
-                      height={200}
-                      className="absolute bottom-0 opacity-80"
-                    />
+                    <Image src="/blur-23.svg" alt="Blur overlay" width={1080} height={200} className="absolute bottom-0 opacity-80" />
 
-                    {/* Experience info */}
-                    <div className="flex justify-center items-center gap-2 mt-1">
-                      {exp.id === 3 && <span className="px-2 py-1 bg-blue-500/30 text-blue-300 text-xs font-semibold rounded">Training</span>}
-                      <p className="text-xs sm:text-sm text-[#16f2b3] font-semibold">{exp.duration}</p>
-                    </div>
-                    <div className="flex items-start gap-3 sm:gap-4 px-2 sm:px-3 py-3 sm:py-4 relative z-10">
-                      <div className="text-violet-500 transition-all duration-300 hover:scale-125 flex-shrink-0 mt-1">
-                        <BsPersonWorkspace size={32} />
+                    <div className="relative z-10 flex items-start gap-3 sm:gap-4">
+                      <div className="mt-1 flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-400/30 bg-violet-500/10 text-violet-300">
+                        <BsPersonWorkspace size={24} />
                       </div>
-
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm sm:text-base lg:text-lg mb-1 font-bold uppercase truncate">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          {exp.id === 3 && <span className="rounded-full border border-sky-400/30 bg-sky-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-sky-300">Training</span>}
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-300">{exp.duration}</p>
+                        </div>
+                        <p className="mt-2 text-base font-semibold uppercase tracking-[0.16em] text-white sm:text-lg">
                           {exp.title}
                         </p>
-                        <p className="text-xs sm:text-sm text-gray-300 truncate">{exp.company}</p>
+                        <p className="mt-1 text-sm text-slate-300">{exp.company}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -114,7 +87,7 @@ function Experience({ onLoad }) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -47,7 +47,7 @@ function ContactSection() {
   ];
 
   return (
-    <div id="contact" className="relative my-12 md:my-16 lg:my-20 text-white overflow-hidden">
+    <div id="contact" className="relative my-10 md:my-14 lg:my-16 text-white overflow-hidden">
       {/* Section title for desktop */}
       <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8 z-10">
         <span className="bg-[#1a1443] text-white rotate-90 p-2 px-5 text-xl rounded-md">
@@ -60,7 +60,7 @@ function ContactSection() {
       <div className="absolute -top-16 -left-16 w-64 h-64 bg-pink-500/20 rounded-full filter blur-3xl animate-blob"></div>
       <div className="absolute -bottom-16 -right-16 w-72 h-72 bg-violet-500/20 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center px-4 lg:px-16">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-4 lg:px-16">
         {/* Contact Form */}
         <ContactForm />
 
@@ -102,7 +102,7 @@ function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center justify-center gap-5 lg:gap-8 mt-6"
+            className="flex items-center justify-center gap-5 lg:gap-8 mt-4"
           >
             {socialLinks.map((social, index) => (
               <Link key={index} target="_blank" href={social.href}>

@@ -13,7 +13,7 @@ const GlowCard = dynamic(() => import("@/app/components/helper/glow-card"), { ss
 
 function Education() {
   return (
-    <div id="education" className="relative z-50 my-12 md:my-16 lg:my-20">
+    <div id="education" className="relative z-50 my-10 md:my-14 lg:my-16">
       {/* Background section image */}
       <Image
         src="/section.svg"
@@ -24,7 +24,7 @@ function Education() {
       />
 
       {/* Section title */}
-      <div className="flex justify-center my-6 md:my-8 lg:my-10 relative z-20">
+      <div className="flex justify-center my-4 md:my-6 lg:my-8 relative z-20">
         <div className="flex items-center gap-3 sm:gap-4">
           <span className="w-16 sm:w-24 h-[2px] bg-gradient-to-r from-transparent via-pink-500 to-transparent"></span>
           <span className="bg-gradient-to-r from-pink-600 to-violet-600 w-fit text-white p-2 px-4 sm:px-5 text-base sm:text-xl font-bold rounded-md">
@@ -34,8 +34,8 @@ function Education() {
         </div>
       </div>
 
-      <div className="py-8 md:py-10 lg:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="py-6 md:py-8 lg:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
           {/* Lottie animation */}
           <div className="flex justify-center items-start">
             <div className="w-full h-full">
