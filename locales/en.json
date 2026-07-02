@@ -12,8 +12,7 @@
             "Node Js Enthusiast",
             "Full-Stack Developer",
             "SEO Conscious Coder",
-            "Problem Solver",
-            "Freelancer on a Mission 🚀"
+            "Problem Solver"
         ]
     },
     "about": {
@@ -35,11 +34,7 @@
         "viewLiveDemo": "Visit Site",
         "demoNotAvailable": "Demo Not Available"
     },
-    "projectsForSale": {
-        "title": "PROJECTS FOR SALE",
-        "description": "Full source code, setup support & customization available.",
-        "contactToBuy": "Contact to Buy"
-    },
+
     "contact": {
         "title": "CONTACT",
         "contactMe": "Contact Me",
@@ -63,7 +58,6 @@
         "skills": "Skills",
         "education": "Education",
         "projects": "Projects",
-        "projectsForSale": "Projects For Sale",
         "contact": "Contact"
     },
     "footer": {
