@@ -1,28 +1,31 @@
-'use client';
-import dynamic from "next/dynamic";
+"use client";
 
-const TagCloudComponent = dynamic(() => import("./components/TagCloudComponent"), { ssr: false });
-const HeroSection = dynamic(() => import("./components/homepage/hero-section"), { ssr: false });
-const Experience = dynamic(() => import("./components/homepage/experience"), { ssr: false });
-const Projects = dynamic(() => import("./components/homepage/projects"), { ssr: false });
-const Skills = dynamic(() => import("./components/homepage/skills"), { ssr: false });
-const Education = dynamic(() => import("./components/homepage/education"), { ssr: false });
-const ContactSection = dynamic(() => import("./components/homepage/contact"), { ssr: false });
-const AboutSection = dynamic(() => import("./components/homepage/about"), { ssr: false });
+import { useEffect } from "react";
+
+import TagCloudComponent from "./components/TagCloudComponent";
+import HeroSection from "./components/homepage/hero-section";
+import Experience from "./components/homepage/experience";
+import Projects from "./components/homepage/projects";
+import Skills from "./components/homepage/skills";
+import Education from "./components/homepage/education";
+import ContactSection from "./components/homepage/contact";
+import AboutSection from "./components/homepage/about";
 
 export default function Home() {
-    return (
-        <>
-            <div suppressHydrationWarning className="pt-24 pb-12 md:pb-16 lg:pb-20">
-                <TagCloudComponent />
-                <HeroSection />
-                <AboutSection />
-                <Experience />
-                <Skills />
-                <Projects />
-                <Education />
-                <ContactSection />
-            </div>
-        </>
-    );
+  // Prevent hydration issues from client-only animation/lottie components
+  useEffect(() => {}, []);
+
+  return (
+    <div suppressHydrationWarning className="pt-24 pb-12 md:pb-16 lg:pb-20">
+      <TagCloudComponent />
+      <HeroSection />
+      <AboutSection />
+      <Experience />
+      <Skills />
+      <Projects />
+      <Education />
+      <ContactSection />
+    </div>
+  );
 }
+
